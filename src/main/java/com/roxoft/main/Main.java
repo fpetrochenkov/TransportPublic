@@ -20,9 +20,10 @@ import com.roxoft.exceptions.DataNotFoundException;
 public class Main{
 
 	public static void main(String[] args) throws XMLStreamException, IOException, SQLException, DataNotFoundException {
-
-//		DepotService serv = new DepotService();
-//		serv.createDepos();
+		System.out.println("----------------------------------------------JDBC------------------------------------------------------");
+		DepotService serv = new DepotService();
+		serv.createDepos();
+		System.out.println("---------------------------------------------MyBatis------------------------------------------------------");
 		DepotDaoImpl depo = new DepotDaoImpl();
 		depo.getAll();
         AddressDaoImpl addr = new AddressDaoImpl();
