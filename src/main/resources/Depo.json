@@ -1,0 +1,188 @@
+[
+
+    {
+      "name": "Bus Depot",
+      "address": {
+        "city": "Minsk", "street": "Rokossovskogo", "zipCode": "228144", "houseNumber": 7
+      },
+      "buses": [
+{
+          "number": 1, "techDate": "20.07.2016", "cost": 5000,
+          "driver": {
+            "firstname": "Alexey", "lastname": "Ivanov", "category": "D", "expirience": 5.5,
+            "address": {
+              "city": "Minsk", "street": "Prityckogo", "zipCode": "220018", "houseNumber": 4
+          }
+        }
+                },
+        {
+
+          "number": 2, "techDate": "25.07.2016", "cost": 5000,
+          "driver": {
+            "firstname": "Vladislav", "lastname": "Karavaev", "category": "D", "expirience": 5.5,
+            "address": {
+              "city": "Minsk", "street": "Mazurova", "zipCode": "220018", "houseNumber": 5
+          }
+        }
+
+        },
+        {
+
+          "number": 3, "techDate": "29.07.2016", "cost": 5000,
+          "driver": {
+            "firstname": "Mihail", "lastname": "Krug", "category": "D", "expirience": 5.5,
+            "address": {
+              "city": "Minsk", "street": "Nemanskaya", "zipCode": "220020", "houseNumber": 1
+          }
+        }
+        }
+
+
+    ]
+},
+    {
+      "name": "Trolleybus Depo",
+      "address": {
+        "city": "Minsk", "street": "Kalinina", "zipCode": "220012", "houseNumber": 5
+      },
+      "trolleybuses": [
+        {
+
+          "number": 8, "techDate": "20.07.2016", "cost": 5500,
+          "driver": {
+            "firstname": "Konstantin", "lastname": "Ignatov", "category": "D", "expirience": 5.5,
+            "address": {
+              "city": "Minsk", "street": "Popova", "zipCode": "220018", "houseNumber": 6
+          }
+          }
+        },
+        {
+
+          "number": 9, "techDate": "25.07.2016", "cost": 5500,
+          "driver": {
+            "firstname": "Filipp", "lastname": "Petrochenkov", "category": "D", "expirience": 5.5,
+            "address": {
+              "city": "Minsk", "street": "Serova", "zipCode": "220022", "houseNumber": 6
+          }
+          }
+        },
+      {
+
+          "number": 7, "techDate": "28.07.2016", "cost": 5500,
+          "driver": {
+            "firstname": "Roman", "lastname": "Pikta", "category": "D", "expirience": 5.5,
+            "address": {
+              "city": "Minsk", "street": "Plehanova", "zipCode": "228124", "houseNumber": 1
+          }
+          }
+        }
+
+    ]
+
+  },
+  {
+    "name": "Tram Depo",
+    "address": {
+      "city": "Minsk", "street": "Nezavisimosty", "zipCode": "221222", "houseNumber": 145
+    },
+    "trams": [
+      {
+
+        "number": 1, "techDate": "20.07.2016", "cost": 6000,
+        "driver": {
+          "firstname": "Dmitry", "lastname": "Susanin", "category": "D", "expirience": 6,
+          "address": {
+            "city": "Minsk", "street": "Semashko", "zipCode": "220001", "houseNumber": 2
+        }
+        }
+
+      },
+      {
+
+        "number": 6, "techDate": "25.07.2016", "cost": 6000,
+        "driver": {
+          "firstname": "Artyom", "lastname": "Sverdlov", "category": "D", "expirience": 6,
+          "address": {
+            "city": "Minsk", "street": "Petrovshina", "zipCode": "220022", "houseNumber": 6
+        }
+        }
+      }
+
+  ]
+
+
+},
+{
+  "name": "Train Depo",
+  "address": {
+    "city": "Minsk", "street": "Yakubova", "zipCode": "220124", "houseNumber": 8
+  },
+  "trains": [
+    {
+
+      "number": 1, "techDate": "20.07.2016", "cost": 40000,
+      "driver": {
+        "firstname": "Oleg", "lastname": "Novitsky", "category": "E", "expirience": 10,
+        "address": {
+          "city": "Minsk", "street": "Popova", "zipCode": "220018", "houseNumber": 5
+      }
+      }
+    },
+    {
+
+      "number": 2, "techDate": "25.07.2016", "cost": 40000,
+      "driver": {
+        "firstname": "Vasily", "lastname": "Berezucky", "category": "E", "expirience": 15,
+        "address": {
+          "city": "Minsk", "street": "Serova", "zipCode": "220022", "houseNumber": 6
+      }
+      }
+    },
+    {
+
+      "number": 3, "techDate": "28.07.2016", "cost": 40000,
+      "driver": {
+        "firstname": "Maxim", "lastname": "Starov", "category": "E", "expirience": 8,
+        "address": {
+          "city": "Minsk", "street": "Plehanova", "zipCode": "228124", "houseNumber": 1
+      }
+      }
+    }
+
+]
+
+
+},
+{
+  "name": "Taxi Station",
+  "address": {
+    "city": "Minsk", "street": "Rokossovskogo", "zipCode": "228144", "houseNumber": 7
+  },
+  "taxis": [
+    {
+
+      "number": 135, "techDate": "20.07.2016", "cost": 70000,
+      "driver": {
+        "firstname": "Alexander", "lastname": "Petrovich", "category": "B", "expirience": 6,
+        "address": {
+          "city": "Minsk", "street": "Semashko", "zipCode": "220001", "houseNumber": 2
+      }
+      }
+    },
+    {
+
+      "number":7788, "techDate": "25.07.2016", "cost": 70000,
+      "driver": {
+        "firstname": "Vladimir", "lastname": "Petrov", "category": "B", "expirience": 3,
+        "address": {
+          "city": "Minsk", "street": "Nemanskaya", "zipCode": "220022", "houseNumber": 6
+      }
+      }
+    }
+
+]
+
+
+}
+
+]

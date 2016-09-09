@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Depot">
+
+	<select id="getAllDepos" resultType="Depot" resultMap="result">
+		SELECT  name, a.id as depoAddrId, a.street as depoStreet, a.house_number as depoHouseNumber, transport_type.type,
+					transport.id, transport_type.id, transport.number,  drivers.last_name, ad.id as driverAddrId, ad.street as driverStreet,
+					ad.house_number as driverHouseNumber,  route.id as routeId, a1.id as stopFromId,
+					a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId,
+	        a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos
+					Inner join transport_type on depos.transport_type_id=transport_type.id
+					Inner join transport on transport_type.id=transport.transport_type_id
+					Inner join route on transport.route_id=route.id
+					Inner join address a1 on route.station_from=a1.id
+					Inner join address a2 on route.station_to=a2.id
+					Inner join drivers on transport.drivers_id = drivers.id
+					Inner join address a on depos.address_id = a.id
+					Inner join address ad on drivers.address_id = ad.id
+  </select>
+
+	<select id="getDepotById" resultType="Depot" resultMap="result">
+		SELECT  name, a.id as depoAddrId, a.street as depoStreet, a.house_number as depoHouseNumber, transport_type.type,
+					transport.id, transport_type.id, transport.number,  drivers.last_name, ad.id as driverAddrId, ad.street as driverStreet,
+					ad.house_number as driverHouseNumber,  route.id as routeId, a1.id as stopFromId,
+					a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId,
+					a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos
+					Inner join transport_type on depos.transport_type_id=transport_type.id
+					Inner join transport on transport_type.id=transport.transport_type_id
+					Inner join route on transport.route_id=route.id
+					Inner join address a1 on route.station_from=a1.id
+					Inner join address a2 on route.station_to=a2.id
+					Inner join drivers on transport.drivers_id = drivers.id
+					Inner join address a on depos.address_id = a.id
+					Inner join address ad on drivers.address_id = ad.id
+	</select>
+
+	<delete id="deleteDepotById">
+		DELETE FROM schema.depos WHERE id= #{id}
+	</delete>
+
+	<insert id = "insert" parameterType = "Depot">
+		 INSERT INTO schema.depos (name, address_id, transport_type_id) VALUES (#{name}, #{address_id}, #{transport_type_id});
+		 <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
+				select last_insert_id() as id
+		 </selectKey>
+	</insert>
+
+	<!-- <resultMap id="result" type="Bus" extends="transports" autoMapping="false"/>
+  <resultMap id="result" type="Trolleybus" extends="transports" autoMapping="false"/>
+  <resultMap id="result" type="Train" extends="transports" autoMapping="false"/>
+  <resultMap id="result" type="Tram" extends="transports" autoMapping="false"/>
+
+	<resultMap id="result" type="Transport" autoMapping="false">
+			 <id property="id" column="id"/>
+			 <result property="number" column="number"/>
+	</resultMap> -->
+
+	<resultMap id="result" type="Depot" autoMapping="false">
+					<id property="id" column="id"/>
+					<result column="name" property="name" />
+					<association property="address" javaType="Address">
+						<id property="id" column="depoAddrId"/>
+						<result column="depoHouseNumber" property="houseNumber" />
+						<result column="depoStreet" property="street" />
+					</association>
+					<!-- <collection property="transports" javaType="Transport">
+						<id property="id" column="id"/>
+						<result column="number" property="number" />
+						<association property="driver" javaType="Driver">
+							<id property="id" column="id"/>
+							<result column="first_name" property="firstName" />
+							<result column="last_name" property="lastName" />
+							<association property="address" javaType="Address">
+									<id property="id" column="driverAddrId"/>
+									<result column="driverHouseNumber" property="houseNumber" />
+									<result column="driverStreet" property="street" />
+							</association>
+						</association>
+						<association property="stop" javaType="com.roxoft.model.Stops">
+							<id property="id" column="routeId"/>
+							<association property="from" javaType="Address">
+									<id property="id" column="stopFromId"/>
+									<result column="houseNumberFrom" property="houseNumber" />
+									<result column="streetFrom" property="street" />
+							</association>
+							<association property="to" javaType="Address">
+									<id property="id" column="stopToId"/>
+									<result column="houseNumberTo" property="houseNumber" />
+									<result column="streetTo" property="street" />
+							</association>
+						</association>
+					</collection> -->
+			</resultMap>
+
+
+</mapper>

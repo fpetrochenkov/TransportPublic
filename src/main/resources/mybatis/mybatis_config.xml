@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+  <properties resource="database.properties">
+      <property name="username" value="username"/>
+      <property name="password" value="password"/>
+      <property name="url" value="url"/>
+      <property name="driver" value="driver"/>
+  </properties>
+
+	<typeAliases>
+    	<typeAlias alias="Address" type="com.roxoft.model.Address" />
+    	<typeAlias alias="Driver" type="com.roxoft.model.Driver" />
+      <typeAlias alias="Bus" type="com.roxoft.model.transport.Bus" />
+      <typeAlias alias="Trolleybus" type="com.roxoft.model.transport.Trolleybus" />
+    	<typeAlias alias="Transport" type="com.roxoft.model.transport.Transport" />
+      <typeAlias alias="Tram" type="com.roxoft.model.transport.Tram" />
+      <typeAlias alias="Train" type="com.roxoft.model.transport.Train" />
+      <typeAlias alias="Taxi" type="com.roxoft.model.transport.Taxi" />
+      <typeAlias alias="Depot" type="com.roxoft.model.Depot" />
+    </typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+    <mapper resource="mybatis/mappers/Address_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Driver_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Bus_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Trolleybus_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Tram_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Train_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Taxi_Mapper.xml" />
+		<mapper resource="mybatis/mappers/Transport_Mapper.xml" />
+    <mapper resource="mybatis/mappers/Depot_Mapper.xml" />
+	</mappers>
+
+</configuration>
