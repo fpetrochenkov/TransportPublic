@@ -4,16 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.roxoft.dao.ITaxiDao;
-import com.roxoft.exceptions.DataNotFoundException;
 import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Taxi;
 
 public class TaxiDaoImpl extends SessionFactory implements ITaxiDao{
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
-	public void create(Taxi entity) throws SQLException {
+	public void create(Taxi entity){
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Taxi.insert", entity);
@@ -25,22 +28,21 @@ public class TaxiDaoImpl extends SessionFactory implements ITaxiDao{
 	}
 
 	@Override
-	public Taxi read(int key) throws SQLException {
+	public Taxi read(int key){
 		Taxi taxi;
         SqlSession session = SessionFactory.getSession();
         try {
         	taxi = session.selectOne("Taxi.getTaxiById", key);
         session.commit();
-        session.close();
         } finally {
         	session.close();
         }
-        System.out.println(taxi.toString());
+        rootLogger.info(taxi.toString());
         return taxi;
 	}
 
 	@Override
-	public List<Taxi> getAll() throws SQLException {
+	public List<Taxi> getAll(){
 		List<Taxi> list;
 		SqlSession session = SessionFactory.getSession();
 		try {
@@ -49,7 +51,6 @@ public class TaxiDaoImpl extends SessionFactory implements ITaxiDao{
 		} finally {
         session.close();
 		}
-		System.out.println(list.toString());
         return list;
 	}
 

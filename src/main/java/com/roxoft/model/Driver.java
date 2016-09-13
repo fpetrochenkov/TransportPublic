@@ -1,18 +1,9 @@
 package com.roxoft.model;
 
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-
-@XmlType(name = "driver", propOrder = {"firstname", "lastname", "category", "expirience", "address"})
 public class Driver {
 	private Integer id;
-	@JsonProperty ("firstame")
 	private String firstName;
-	@JsonProperty ("lastname")
 	private String lastName;
-	@JsonProperty
 	private Address address = new Address();
 
 	public Driver() {

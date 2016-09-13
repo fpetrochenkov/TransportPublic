@@ -4,15 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.roxoft.dao.IBusDao;
 import com.roxoft.model.Address;
 import com.roxoft.model.transport.Bus;
 
 public class BusDaoImpl extends SessionFactory implements IBusDao{
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
-	public void create(Bus entity) throws SQLException {
+	public void create(Bus entity) {
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Bus.insert", entity);
@@ -24,22 +28,21 @@ public class BusDaoImpl extends SessionFactory implements IBusDao{
 	}
 
 	@Override
-	public Bus read(int key) throws SQLException {
+	public Bus read(int key) {
 		Bus bus;
         SqlSession session = SessionFactory.getSession();
         try {
         bus = session.selectOne("Bus.getBusById", key);
         session.commit();
-        session.close();
         } finally {
         	session.close();
         }
-        System.out.println(bus.toString());
+        rootLogger.info(bus.toString());
         return bus;
 	}
 
 	@Override
-	public List<Bus> getAll() throws SQLException {
+	public List<Bus> getAll() {
 		List<Bus> list;
 		SqlSession session = SessionFactory.getSession();
 		try {
@@ -48,7 +51,6 @@ public class BusDaoImpl extends SessionFactory implements IBusDao{
 		} finally {
         session.close();
 		}
-		System.out.println(list.toString());
         return list;
 	}
 

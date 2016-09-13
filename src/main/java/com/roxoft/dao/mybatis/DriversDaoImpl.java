@@ -4,15 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.roxoft.dao.IDriversDao;
 import com.roxoft.model.Address;
 import com.roxoft.model.Driver;
 
 public class DriversDaoImpl extends SessionFactory implements IDriversDao{
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
-	public void create(Driver entity) throws SQLException {
+	public void create(Driver entity)  {
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Driver.insert", entity);
@@ -24,22 +28,21 @@ public class DriversDaoImpl extends SessionFactory implements IDriversDao{
 	}
 
 	@Override
-	public Driver read(int key) throws SQLException {
+	public Driver read(int key)  {
 		Driver driver;
         SqlSession session = SessionFactory.getSession();
         try {
         	driver = session.selectOne("Driver.getDriverById", key);
         session.commit();
-        session.close();
         } finally {
         	session.close();
         }
-        System.out.println(driver.toString());
+        rootLogger.info(driver.toString());
         return driver;
 	}
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id)  {
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Driver.deleteDriverById", id);
@@ -51,7 +54,7 @@ public class DriversDaoImpl extends SessionFactory implements IDriversDao{
 	}
 
 	@Override
-	public List<Driver> getAll() throws SQLException {
+	public List<Driver> getAll() {
 		List<Driver> list;
 		SqlSession session = SessionFactory.getSession();
 		try {
@@ -60,7 +63,7 @@ public class DriversDaoImpl extends SessionFactory implements IDriversDao{
 		} finally {
         session.close();
 		}
-		System.out.println(list);
+		rootLogger.info(list);
         return list;
 	}
 

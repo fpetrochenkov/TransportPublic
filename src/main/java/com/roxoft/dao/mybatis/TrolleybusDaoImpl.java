@@ -4,15 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.roxoft.dao.ITrolleybusDao;
 import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Trolleybus;
 
 public class TrolleybusDaoImpl extends SessionFactory implements ITrolleybusDao{
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
-	public void create(Trolleybus entity) throws SQLException {
+	public void create(Trolleybus entity){
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Trolleybus.insert", entity);
@@ -24,22 +28,21 @@ public class TrolleybusDaoImpl extends SessionFactory implements ITrolleybusDao{
 	}
 
 	@Override
-	public Trolleybus read(int key) throws SQLException {
+	public Trolleybus read(int key){
 		Trolleybus trolley;
         SqlSession session = SessionFactory.getSession();
         try {
         	trolley = session.selectOne("Trolleybus.getTrolleybusById", key);
         session.commit();
-        session.close();
         } finally {
         	session.close();
         }
-        System.out.println(trolley.toString());
+        rootLogger.info(trolley.toString());
         return trolley;
 	}
 
 	@Override
-	public List<Trolleybus> getAll() throws SQLException {
+	public List<Trolleybus> getAll(){
 		List<Trolleybus> list;
 		SqlSession session = SessionFactory.getSession();
 		try {
@@ -48,7 +51,6 @@ public class TrolleybusDaoImpl extends SessionFactory implements ITrolleybusDao{
 		} finally {
         session.close();
 		}
-		System.out.println(list.toString());
         return list;
 	}
 

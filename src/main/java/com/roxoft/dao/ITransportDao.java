@@ -7,7 +7,7 @@ import com.roxoft.model.transport.Transport;
 
 public interface ITransportDao {
 	
-	public void delete(int id) throws SQLException;
+	public void delete(int id);
 	
 	
 }

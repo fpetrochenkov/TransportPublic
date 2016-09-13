@@ -7,12 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.roxoft.dao.IDriversDao;
 import com.roxoft.model.Address;
 import com.roxoft.model.Driver;
 
 public class DriversDaoImpl implements IDriversDao {
 
+	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = Logger.getLogger(DriversDaoImpl.class);
 	private  Connection connection;
 
 	public DriversDaoImpl(Connection connection) {
@@ -20,7 +25,7 @@ public class DriversDaoImpl implements IDriversDao {
 	}
 
 	@Override
-	public void create(Driver entity) throws SQLException {
+	public void create(Driver entity) {
 		String sql = "INSERT INTO schema.drivers (first_name, last_name, Address_id) "
 				+ "VALUES ('Alexey', 'Termik', 8);";
 		PreparedStatement stm = null;
@@ -28,14 +33,19 @@ public class DriversDaoImpl implements IDriversDao {
 			stm = connection.prepareStatement(sql);
 			stm.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			stm.close();
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 	}
 
 	@Override
-	public Driver read(int key) throws SQLException {
+	public Driver read(int key) {
 		Driver d = new Driver();
 		Address a = new Address();
 		String sql = "SELECT * FROM schema.drivers inner join address  on drivers.address_id = address.id WHERE drivers.id = ?;";
@@ -58,22 +68,23 @@ public class DriversDaoImpl implements IDriversDao {
 				d = new Driver();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
 			if (rs != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+			
 		}
-		System.out.println(d.toString());
+		rootLogger.info(d.toString());
 		return d;
 	}
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id) {
 		String sql = "DELETE FROM schema.drivers WHERE id= ?";
 		PreparedStatement stm = null;
 		try {
@@ -81,15 +92,20 @@ public class DriversDaoImpl implements IDriversDao {
 			stm.setInt(1, id);
 			stm.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			stm.close();
+			if (stm != null)
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				LOG.error("SQLException", e);
+			}
 		}
 
 	}
 
 	@Override
-	public ArrayList<Driver> getAll() throws SQLException {
+	public ArrayList<Driver> getAll() {
 		ArrayList<Driver> list = new ArrayList<Driver>();
 		Driver d = new Driver();
 		Address a = new Address();
@@ -112,17 +128,18 @@ public class DriversDaoImpl implements IDriversDao {
 				d = new Driver();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
 			if (rs != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+			
 		}
-		System.out.println(list.toString());
+		rootLogger.info(list.toString());
 		return list;
 	}
 

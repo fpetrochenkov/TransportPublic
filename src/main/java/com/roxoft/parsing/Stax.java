@@ -15,8 +15,8 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 import com.roxoft.model.Address;
-import com.roxoft.model.Depot;
 import com.roxoft.model.Driver;
+import com.roxoft.model.depos.Depot;
 import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Taxi;
 import com.roxoft.model.transport.Train;

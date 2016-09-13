@@ -4,15 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.roxoft.dao.ITramDao;
 import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Tram;
 
 public class TramDaoImpl extends SessionFactory implements ITramDao{
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
-	public void create(Tram entity) throws SQLException {
+	public void create(Tram entity)  {
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Tram.insert", entity);
@@ -24,22 +28,21 @@ public class TramDaoImpl extends SessionFactory implements ITramDao{
 	}
 
 	@Override
-	public Tram read(int key) throws SQLException {
+	public Tram read(int key)  {
 		Tram tram;
         SqlSession session = SessionFactory.getSession();
         try {
         	tram = session.selectOne("Tram.getTramById", key);
         session.commit();
-        session.close();
         } finally {
         	session.close();
         }
-        System.out.println(tram.toString());
+        rootLogger.info(tram.toString());
         return tram;
 	}
 
 	@Override
-	public List<Tram> getAll() throws SQLException {
+	public List<Tram> getAll()  {
 		List<Tram> list;
 		SqlSession session = SessionFactory.getSession();
 		try {
@@ -48,7 +51,6 @@ public class TramDaoImpl extends SessionFactory implements ITramDao{
 		} finally {
         session.close();
 		}
-		System.out.println(list.toString());
         return list;
 	}
 

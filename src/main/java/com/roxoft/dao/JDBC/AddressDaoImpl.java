@@ -7,18 +7,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.roxoft.dao.IAddressDao;
 import com.roxoft.model.Address;
 
 public class AddressDaoImpl implements IAddressDao {
-	private  Connection connection;
+
+	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = Logger.getLogger(AddressDaoImpl.class);
+
+	private Connection connection;
 
 	public AddressDaoImpl(Connection connection) {
 		this.connection = connection;
 	}
 
 	@Override
-	public List<Address> getAll() throws SQLException {
+	public List<Address> getAll() {
 		List<Address> list = new ArrayList<Address>();
 		String sql = "SELECT * FROM schema.address;";
 		PreparedStatement stm = null;
@@ -34,36 +41,42 @@ public class AddressDaoImpl implements IAddressDao {
 				list.add(g);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			if (rs != null)
+			if (rs != null && stm != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+
 		}
-		System.out.println(list.toString());
+		rootLogger.info(list.toString());
 		return list;
 	}
 
 	@Override
-	public void create(Address entity) throws SQLException {
+	public void create(Address entity) {
 		String sql = "INSERT INTO schema.address (street, house_number) VALUES ('Rokossovskogo', 7);";
 		PreparedStatement stm = null;
 		try {
 			stm = connection.prepareStatement(sql);
 			stm.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			stm.close();
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 	}
 
 	@Override
-	public Address read(int key) throws SQLException {
+	public Address read(int key) {
 		Address g = new Address();
 		String sql = "SELECT * FROM schema.address WHERE id = ?;";
 		PreparedStatement stm = null;
@@ -78,35 +91,38 @@ public class AddressDaoImpl implements IAddressDao {
 			g.setStreet(rs.getString("street"));
 			g.setHouseNumber(rs.getInt("house_number"));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			if (rs != null)
+			if (rs != null && stm != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
 		}
-		System.out.println(g.toString());
+		rootLogger.info(g.toString());
 		return g;
 
 	}
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id) {
 		String sql = "DELETE FROM schema.address WHERE id= ?";
 		PreparedStatement stm = null;
 		try {
-		stm = connection.prepareStatement(sql);
-		stm.setInt(1, id);
-		stm.executeUpdate();
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			stm.close();
+			stm = connection.prepareStatement(sql);
+			stm.setInt(1, id);
+			stm.executeUpdate();
+		} catch (SQLException e) {
+			LOG.error("SQLException", e);
+		} finally {
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 	}
 

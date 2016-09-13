@@ -4,15 +4,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-
 import com.roxoft.dao.IDepotDao;
 import com.roxoft.model.Address;
-import com.roxoft.model.Depot;
+import com.roxoft.model.depos.Depot;
 
 public class DepotDaoImpl extends SessionFactory implements IDepotDao {
 
 	@Override
-	public void create(Depot entity) throws SQLException {
+	public void create(Depot entity){
 		SqlSession session = SessionFactory.getSession();
 		try {
 			session.insert("Depot.insert", entity);
@@ -24,22 +23,7 @@ public class DepotDaoImpl extends SessionFactory implements IDepotDao {
 	}
 
 	@Override
-	public Depot read(int key) throws SQLException {
-		Depot depo;
-		SqlSession session = SessionFactory.getSession();
-		try {
-			depo = session.selectOne("Depot.getDepotById", key);
-			session.commit();
-			session.close();
-		} finally {
-			session.close();
-		}
-		System.out.println(depo.toString());
-		return depo;
-	}
-
-	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id) {
 		SqlSession session = SessionFactory.getSession();
 		try {
 			session.insert("Depot.deleteDepotById", id);
@@ -49,18 +33,6 @@ public class DepotDaoImpl extends SessionFactory implements IDepotDao {
 		}
 	}
 
-	@Override
-	public List<Depot> getAll() throws SQLException {
-		List<Depot> list;
-		SqlSession session = SessionFactory.getSession();
-		try {
-			list = session.selectList("Depot.getAllDepos");
-			session.commit();
-		} finally {
-			session.close();
-		}
-		System.out.println(list.toString());
-		return list;
-	}
+
 
 }

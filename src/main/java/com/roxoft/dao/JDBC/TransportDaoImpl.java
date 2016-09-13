@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.roxoft.dao.ITransportDao;
 import com.roxoft.model.Address;
 import com.roxoft.model.Driver;
@@ -19,6 +22,9 @@ import com.roxoft.model.transport.Transport;
 import com.roxoft.model.transport.Trolleybus;
 
 public class TransportDaoImpl implements ITransportDao {
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = Logger.getLogger(TransportDaoImpl.class);
 	private  Connection connection;
 
 	public TransportDaoImpl(Connection connection) {
@@ -28,7 +34,7 @@ public class TransportDaoImpl implements ITransportDao {
 
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id) {
 		String sql = "DELETE FROM mydb.transport WHERE id= ?";
 		PreparedStatement stm = null;
 		try {
@@ -36,9 +42,14 @@ public class TransportDaoImpl implements ITransportDao {
 			stm.setInt(1, id);
 			stm.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			stm.close();
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 
 	}

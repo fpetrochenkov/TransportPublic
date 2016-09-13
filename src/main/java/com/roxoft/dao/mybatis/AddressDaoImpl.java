@@ -4,32 +4,35 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.roxoft.dao.IAddressDao;
 import com.roxoft.model.Address;
 
 public class AddressDaoImpl extends SessionFactory implements IAddressDao {
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
-	public Address read(int key) throws SQLException {
+	public Address read(int key) {
 		Address address;
 		SqlSession session = SessionFactory.getSession();
 		try {
 			address = session.selectOne("Address.getAddressById", key);
 			session.commit();
-			session.close();
 		} finally {
 			session.close();
 		}
-		System.out.println(address.toString());
+		rootLogger.info(address.toString());
 		return address;
 	}
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id) {
 		SqlSession session = SessionFactory.getSession();
 		try {
-			session.insert("Address_Mapper.deleteAddressById", id);
+			session.insert("Address.deleteAddressById", id);
 			session.commit();
 		} finally {
 			session.close();
@@ -38,7 +41,7 @@ public class AddressDaoImpl extends SessionFactory implements IAddressDao {
 	}
 
 	@Override
-	public List<Address> getAll() throws SQLException {
+	public List<Address> getAll() {
 		List<Address> list;
 		SqlSession session = SessionFactory.getSession();
 		try {
@@ -47,15 +50,15 @@ public class AddressDaoImpl extends SessionFactory implements IAddressDao {
 		} finally {
 			session.close();
 		}
-		System.out.println(list.toString());
+		rootLogger.info(list.toString());
 		return list;
 	}
 
 	@Override
-	public void create(Address entity) throws SQLException {
+	public void create(Address entity) {
 		SqlSession session = SessionFactory.getSession();
 		try {
-			session.insert("Address_Mapper.insert", entity);
+			session.insert("Address.insert", entity);
 			session.commit();
 		} finally {
 			session.close();

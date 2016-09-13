@@ -3,13 +3,15 @@ package com.roxoft.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.roxoft.model.Address;
 
 public interface IAddressDao <E, K> {
 	
-	public Address read(int key) throws SQLException;	
-	public void delete(int id) throws SQLException;
-	public List<Address> getAll() throws SQLException;
-	void create(Address entity) throws SQLException;
+	public Address read(int key);	
+	public void delete(int id);
+	public List<Address> getAll();
+	void create(Address entity);
 
 }

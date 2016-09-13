@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.roxoft.dao.ITaxiDao;
-import com.roxoft.exceptions.DataNotFoundException;
 import com.roxoft.model.Address;
 import com.roxoft.model.Driver;
 import com.roxoft.model.Stops;
@@ -16,6 +18,9 @@ import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Taxi;
 
 public class TaxiDaoImpl implements ITaxiDao {
+	
+	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = Logger.getLogger(TaxiDaoImpl.class);
 	private final Connection connection;
 
 	public TaxiDaoImpl(Connection connection) {
@@ -23,22 +28,27 @@ public class TaxiDaoImpl implements ITaxiDao {
 	}
 
 	@Override
-	public void create(Taxi entity) throws SQLException {
+	public void create(Taxi entity) {
 		String sql = "INSERT INTO schema.transport (id, number, Drivers_id) " + "VALUES (14, 10, 10 );";
 		PreparedStatement stm = null;
 		try {
 			stm = connection.prepareStatement(sql);
 			stm.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			stm.close();
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 
 	}
 
 	@Override
-	public Taxi read(int key) throws SQLException {
+	public Taxi read(int key) {
 		Taxi b = new Taxi();
 		Stops stop = new Stops();
 		Driver d = new Driver();
@@ -75,22 +85,23 @@ public class TaxiDaoImpl implements ITaxiDao {
 			stop = new Stops();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
 			if (rs != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+			
 		}
-		System.out.println(b.toString());
+		rootLogger.info(b.toString());
 		return b;
 	}
 
 	@Override
-	public List<Taxi> getAll() throws SQLException {
+	public List<Taxi> getAll() {
 		List<Taxi> list = new ArrayList<Taxi>();
 		Address a = new Address();
 		Driver d = new Driver();
@@ -133,18 +144,18 @@ public class TaxiDaoImpl implements ITaxiDao {
 				stop = new Stops();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		}  finally {
 			if (rs != null && addressResultSet!= null)
 				try {
 					rs.close();
+					stm.close();
 					addressResultSet.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+			
 		}
-		System.out.println(list.toString());
 		return list;
 	}
 

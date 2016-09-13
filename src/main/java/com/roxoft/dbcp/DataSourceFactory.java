@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
-
+import org.apache.log4j.Logger;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class DataSourceFactory {
+	
+    private static final Logger LOG = Logger.getLogger(DataSourceFactory.class);
 	private static Connection connection = null;
 	private static BasicDataSource dataSource = null;
 
@@ -36,10 +38,10 @@ public class DataSourceFactory {
 			try {
 				connection = dataSource.getConnection();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				LOG.error("SQLException", e);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("IOException", e);
 		}
 
 		return dataSource;

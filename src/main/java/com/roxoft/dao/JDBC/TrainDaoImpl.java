@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.roxoft.dao.ITrainDao;
-import com.roxoft.exceptions.DataNotFoundException;
 import com.roxoft.model.Address;
 import com.roxoft.model.Driver;
 import com.roxoft.model.Stops;
@@ -16,6 +19,9 @@ import com.roxoft.model.transport.Train;
 
 public class TrainDaoImpl implements ITrainDao {
 
+	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = Logger.getLogger(TrainDaoImpl.class);
+
 	private final Connection connection;
 
 	public TrainDaoImpl(Connection connection) {
@@ -23,22 +29,27 @@ public class TrainDaoImpl implements ITrainDao {
 	}
 
 	@Override
-	public void create(Train entity) throws SQLException {
+	public void create(Train entity) {
 		String sql = "INSERT INTO schema.transport (id, number, Drivers_id) " + "VALUES (14, 10, 6);";
 		PreparedStatement stm = null;
 		try {
 			stm = connection.prepareStatement(sql);
 			stm.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			stm.close();
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 
 	}
 
 	@Override
-	public Train read(int key) throws SQLException {
+	public Train read(int key) {
 		Train b = new Train();
 		Driver d = new Driver();
 		Address a = new Address();
@@ -82,22 +93,23 @@ public class TrainDaoImpl implements ITrainDao {
 				stop = new Stops();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			if (rs != null)
+			if (rs != null && stm != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+
 		}
-		System.out.println(b.toString());
+		rootLogger.info(b.toString());
 		return b;
 	}
 
 	@Override
-	public List<Train> getAll() throws SQLException {
+	public List<Train> getAll() {
 		Train b = new Train();
 		Driver d = new Driver();
 		Address a = new Address();
@@ -145,18 +157,18 @@ public class TrainDaoImpl implements ITrainDao {
 				stop = new Stops();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.error("SQLException", e);
 		} finally {
-			if (rs != null && addressResultSet != null)
+			if (rs != null && addressResultSet != null && stm != null)
 				try {
 					rs.close();
 					addressResultSet.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+
 		}
-		System.out.println(list.toString());
 		return list;
 	}
 

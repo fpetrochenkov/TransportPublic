@@ -20,7 +20,12 @@
       <typeAlias alias="Tram" type="com.roxoft.model.transport.Tram" />
       <typeAlias alias="Train" type="com.roxoft.model.transport.Train" />
       <typeAlias alias="Taxi" type="com.roxoft.model.transport.Taxi" />
-      <typeAlias alias="Depot" type="com.roxoft.model.Depot" />
+      <typeAlias alias="Depot" type="com.roxoft.model.depos.Depot" />
+      <typeAlias alias="BusDepo" type="com.roxoft.model.depos.BusDepo" />
+      <typeAlias alias="TrolleybusDepo" type="com.roxoft.model.depos.TrolleybusDepo" />
+      <typeAlias alias="TramDepo" type="com.roxoft.model.depos.TramDepo" />
+      <typeAlias alias="TrainDepo" type="com.roxoft.model.depos.TrainDepo" />
+      <typeAlias alias="TaxiStation" type="com.roxoft.model.depos.TaxiStation" />
     </typeAliases>
 
 	<environments default="development">
@@ -45,6 +50,22 @@
     <mapper resource="mybatis/mappers/Taxi_Mapper.xml" />
 		<mapper resource="mybatis/mappers/Transport_Mapper.xml" />
     <mapper resource="mybatis/mappers/Depot_Mapper.xml" />
+    <mapper resource="mybatis/mappers/BusDepo_Mapper.xml" />
+    <mapper resource="mybatis/mappers/TrolleybusDepo_Mapper.xml" />
+    <mapper resource="mybatis/mappers/TramDepo_Mapper.xml" />
+    <mapper resource="mybatis/mappers/TrainDepo_Mapper.xml" />
+    <mapper resource="mybatis/mappers/TaxiStation_Mapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/BusMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TrolleybusMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TramMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TrainMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TaxiMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/BusDepoMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TrolleybusDepoMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TramDepoMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TrainDepoMapper.xml" />
+    <mapper resource="mybatis/mappers/new_mappers/TaxiStationMapper.xml" />
+
 	</mappers>
 
 </configuration>

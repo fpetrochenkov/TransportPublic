@@ -11,7 +11,7 @@ public class TransportDaoImpl extends SessionFactory implements ITransportDao{
 	
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(int id)  {
 		SqlSession session = SessionFactory.getSession();
 		try {		
 			session.insert("Transport.deleteTransportById", id);

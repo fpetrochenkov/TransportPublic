@@ -1,11 +1,10 @@
 package com.roxoft.model;
 
-
 public class Address {
 	private Integer id;
 	private String street;
 	private int houseNumber;
-	
+
 	public Address() {
 	}
 
@@ -30,7 +29,7 @@ public class Address {
 	public void setHouseNumber(int houseNumber) {
 		this.houseNumber = houseNumber;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -43,8 +42,5 @@ public class Address {
 	public String toString() {
 		return street + ", " + houseNumber;
 	}
-
-
-
 
 }

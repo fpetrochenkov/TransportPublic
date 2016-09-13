@@ -1,6 +1,5 @@
 package com.roxoft.model.transport;
 
-import java.util.List;
 import com.roxoft.model.Driver;
 import com.roxoft.model.Stops;
 

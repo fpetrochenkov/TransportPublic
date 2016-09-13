@@ -7,16 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.roxoft.dao.IBusDao;
-import com.roxoft.exceptions.DataNotFoundException;
-import com.roxoft.exceptions.IncorrectIdException;
-import com.roxoft.exceptions.IncorrectInputException;
 import com.roxoft.model.Address;
 import com.roxoft.model.Driver;
 import com.roxoft.model.Stops;
 import com.roxoft.model.transport.Bus;
 
 public class BusDaoImpl implements IBusDao {
+
+	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = Logger.getLogger(BusDaoImpl.class);
 	private Connection connection;
 
 	public BusDaoImpl(Connection connection) {
@@ -24,22 +27,27 @@ public class BusDaoImpl implements IBusDao {
 	}
 
 	@Override
-	public void create(Bus entity) throws SQLException {
+	public void create(Bus entity) {
 		String sql = "INSERT INTO schema.transport (id, number, Drivers_id) " + "VALUES (14, 10, 5);";
 		PreparedStatement stm = null;
 		try {
 			stm = connection.prepareStatement(sql);
 			stm.executeUpdate();
-			
+
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}  finally {
-			stm.close();
+			LOG.error("SQLException", e);
+		} finally {
+			if (stm != null)
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					LOG.error("SQLException", e);
+				}
 		}
 	}
 
 	@Override
-	public Bus read(int key) throws SQLException {
+	public Bus read(int key) {
 		Bus b = new Bus();
 		Stops stop = new Stops();
 		Driver d = new Driver();
@@ -82,25 +90,25 @@ public class BusDaoImpl implements IBusDao {
 				to = new Address();
 				b.setStop(stop);
 				stop = new Stops();
-				
+
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}		finally {
-			if (rs != null)
+			LOG.error("SQLException", e);
+		} finally {
+			if (rs != null && stm != null)
 				try {
 					rs.close();
+					stm.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
 		}
-		System.out.println(b.toString());
+		rootLogger.info(b.toString());
 		return b;
 	}
 
 	@Override
-	public List<Bus> getAll() throws SQLException {
+	public List<Bus> getAll() {
 		List<Bus> list = new ArrayList<Bus>();
 		Bus b = new Bus();
 		Address a = new Address();
@@ -152,22 +160,19 @@ public class BusDaoImpl implements IBusDao {
 
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		finally {
+			LOG.error("SQLException", e);
+		} finally {
 			if (rs != null && addressResultSet != null)
 				try {
 					rs.close();
+					stm.close();
 					addressResultSet.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					LOG.error("SQLException", e);
 				}
-			stm.close();
+
 		}
-		System.out.println(list.toString());
 		return list;
 	}
-
-	
 
 }
