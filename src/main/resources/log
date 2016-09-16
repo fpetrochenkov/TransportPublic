@@ -1,0 +1,266 @@
+2016-09-16 10:26:27 INFO  root:56 - ----------------------------------------------JDBC--------------------------------------------------------
+2016-09-16 10:26:27 INFO  root:71 - Bus Depo: Rokossovskogo, 26
+Buses: [
+Bus: number: 1,  Driver: 
+Alexey Starov;  Drivers address: Rokossovskogo, 26; Route: Rokossovskogo, 26 - Kalinina, 25, 
+Bus: number: 2,  Driver: 
+Vladislav Petrovich;  Drivers address: Nezavisimosty, 24; Route: Nezavisimosty, 24 - Yakubova, 23, 
+Bus: number: 3,  Driver: 
+Mihail Petrov;  Drivers address: Rokossovskogo, 22; Route: Rokossovskogo, 22 - Prityckogo, 21]
+2016-09-16 10:26:27 INFO  root:78 - Trolleybus Depo: Kalinina, 25
+Trolleybuses: [
+Trolleybus: number: 7,  Driver: 
+Konstantin Ivanov;  Drivers address: Mazurova, 20; Route: Mazurova, 20 - Nemanskaya, 19, 
+Trolleybus: number: 8,  Driver: 
+Filipp Karavaev;  Drivers address: Popova, 18; Route: Popova, 18 - Serova, 17, 
+Trolleybus: number: 9,  Driver: 
+Roman Krug;  Drivers address: Plehanova, 16; Route: Plehanova, 16 - Semashko, 15]
+2016-09-16 10:26:27 INFO  root:85 - Tram Depo: Nezavisimosty, 24
+Trams: [
+Tram: number: 1,  Driver: 
+Dmitry Ignatov;  Drivers address: Petrovshina, 14; Route: Petrovshina, 14 - Popova, 13, 
+Tram: number: 6,  Driver: 
+Artyom Petrochenkov;  Drivers address: Serova, 12; Route: Serova, 12 - Plehanova, 11]
+2016-09-16 10:26:27 INFO  root:92 - Train Depo: Yakubova, 23
+Trains: [
+Train: number: 1,  Driver: 
+Oleg Pikta;  Drivers address: Semashko, 10; Route: Semashko, 10 - Nemanskaya, 9, 
+Train: number: 2,  Driver: 
+Vasily Susanin;  Drivers address: Nemiga, 8; Route: Nemiga, 8 - Rokossovskogo, 7, 
+Train: number: 3,  Driver: 
+Maxim Sverdlov;  Drivers address: Avenue, 6; Route: Avenue, 6 - Orlovskaya, 5]
+2016-09-16 10:26:27 INFO  root:99 - Taxi Station: Rokossovskogo, 22
+Taxis: [
+Taxi: number: 135,  Driver: 
+Alexander Novitsky;  Drivers address: Surganova, 4; Route: Surganova, 4 - Semashko, 3, 
+Taxi: number: 7788,  Driver: 
+Vladimir Berezucky;  Drivers address: Kalinina, 2; Route: Kalinina, 2 - Rokossovskogo, 1]
+2016-09-16 10:26:27 INFO  root:60 - ---------------------------------------------MyBatis------------------------------------------------------
+2016-09-16 10:26:27 DEBUG LogFactory:54 - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - PooledDataSource forcefully closed/removed all connections.
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - PooledDataSource forcefully closed/removed all connections.
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - PooledDataSource forcefully closed/removed all connections.
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - PooledDataSource forcefully closed/removed all connections.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Created connection 532854629.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getBusDepoById:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 1 
+2016-09-16 10:26:28 DEBUG getBusDepoById:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getBusDepoById:54 - <==      Total: 1
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getAllBuses:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 1 
+2016-09-16 10:26:28 DEBUG getAllBuses:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getAllBuses:54 - <==      Total: 3
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 INFO  root:32 - Bus Depo: Rokossovskogo, 26
+Buses: [
+Bus: number: 1,  Driver: 
+Alexey Starov;  Drivers address: Prityckogo, 21; Route: Rokossovskogo, 26 - Kalinina, 25, 
+Bus: number: 2,  Driver: 
+Vladislav Petrovich;  Drivers address: Mazurova, 20; Route: Nezavisimosty, 24 - Yakubova, 23, 
+Bus: number: 3,  Driver: 
+Mihail Petrov;  Drivers address: Nemanskaya, 19; Route: Rokossovskogo, 22 - Prityckogo, 21]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getTrolleybusDepoById:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 2 
+2016-09-16 10:26:28 DEBUG getTrolleybusDepoById:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getTrolleybusDepoById:54 - <==      Total: 1
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getAllTrolleybuses:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 2 
+2016-09-16 10:26:28 DEBUG getAllTrolleybuses:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getAllTrolleybuses:54 - <==      Total: 3
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 INFO  root:32 - Trolleybus Depo: Kalinina, 25
+Trolleybuses: [
+Trolleybus: number: 7,  Driver: 
+Konstantin Ivanov;  Drivers address: Popova, 18; Route: Mazurova, 20 - Nemanskaya, 19, 
+Trolleybus: number: 8,  Driver: 
+Filipp Karavaev;  Drivers address: Serova, 17; Route: Popova, 18 - Serova, 17, 
+Trolleybus: number: 9,  Driver: 
+Roman Krug;  Drivers address: Plehanova, 16; Route: Plehanova, 16 - Semashko, 15]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getTramDepoById:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 3 
+2016-09-16 10:26:28 DEBUG getTramDepoById:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getTramDepoById:54 - <==      Total: 1
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getAllTrams:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 3 
+2016-09-16 10:26:28 DEBUG getAllTrams:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getAllTrams:54 - <==      Total: 2
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 INFO  root:32 - Tram Depo: Nezavisimosty, 24
+Trams: [
+Tram: number: 1,  Driver: 
+Dmitry Ignatov;  Drivers address: Semashko, 15; Route: Petrovshina, 14 - Popova, 13, 
+Tram: number: 6,  Driver: 
+Artyom Petrochenkov;  Drivers address: Petrovshina, 14; Route: Serova, 12 - Plehanova, 11]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getTrainDepoById:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 4 
+2016-09-16 10:26:28 DEBUG getTrainDepoById:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getTrainDepoById:54 - <==      Total: 1
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG getAllTrains:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 4 
+2016-09-16 10:26:28 DEBUG getAllTrains:54 - ==> Parameters: 
+2016-09-16 10:26:28 DEBUG getAllTrains:54 - <==      Total: 3
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:28 INFO  root:32 - Train Depo: Yakubova, 23
+Trains: [
+Train: number: 1,  Driver: 
+Oleg Pikta;  Drivers address: Popova, 13; Route: Semashko, 10 - Nemanskaya, 9, 
+Train: number: 2,  Driver: 
+Vasily Susanin;  Drivers address: Serova, 12; Route: Nemiga, 8 - Rokossovskogo, 7, 
+Train: number: 3,  Driver: 
+Maxim Sverdlov;  Drivers address: Plehanova, 11; Route: Avenue, 6 - Orlovskaya, 5]
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:28 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:28 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG getTaxiStationById:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 5 
+2016-09-16 10:26:29 DEBUG getTaxiStationById:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getTaxiStationById:54 - <==      Total: 1
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG getAllTaxis:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 5 
+2016-09-16 10:26:29 DEBUG getAllTaxis:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getAllTaxis:54 - <==      Total: 2
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Returned connection 532854629 to pool.
+2016-09-16 10:26:29 INFO  root:31 - Taxi Station: Rokossovskogo, 22
+Taxis: [
+Taxi: number: 135,  Driver: 
+Alexander Novitsky;  Drivers address: Semashko, 10; Route: Surganova, 4 - Semashko, 3, 
+Taxi: number: 7788,  Driver: 
+Vladimir Berezucky;  Drivers address: Nemanskaya, 9; Route: Kalinina, 2 - Rokossovskogo, 1]
+2016-09-16 10:26:29 INFO  root:75 - ---------------------------------------------MyBatis(ver 2)-------------------------------------------------
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Checked out connection 532854629 from pool.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@1fc2b765]
+2016-09-16 10:26:29 DEBUG getAll:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 1 
+2016-09-16 10:26:29 DEBUG getAll:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getAll:54 - <==      Total: 3
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 1151593579.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@44a3ec6b]
+2016-09-16 10:26:29 DEBUG getAll:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 2 
+2016-09-16 10:26:29 DEBUG getAll:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getAll:54 - <==      Total: 3
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 1640639994.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@61ca2dfa]
+2016-09-16 10:26:29 DEBUG getAll:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 3 
+2016-09-16 10:26:29 DEBUG getAll:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getAll:54 - <==      Total: 2
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 797925218.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@2f8f5f62]
+2016-09-16 10:26:29 DEBUG getAll:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 4 
+2016-09-16 10:26:29 DEBUG getAll:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getAll:54 - <==      Total: 3
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 1686369710.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@6483f5ae]
+2016-09-16 10:26:29 DEBUG getAll:54 - ==>  Preparing: SELECT transport.number, drivers.first_name, drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber, route.id as routeId, a1.id as stopFromId, a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId, a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos Inner join transport_type on depos.transport_type_id=transport_type.id Inner join transport on transport_type.id=transport.transport_type_id Inner join route on transport.route_id=route.id Inner join address a1 on a1.id = route.station_from Inner join address a2 on a2.id = route.station_to Inner join drivers on transport.drivers_id = drivers.id Inner join address a on a.id = drivers.address_id where transport_type.id = 5 
+2016-09-16 10:26:29 DEBUG getAll:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG getAll:54 - <==      Total: 2
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 1411892748.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@5427c60c]
+2016-09-16 10:26:29 DEBUG read:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 1 
+2016-09-16 10:26:29 DEBUG read:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG read:54 - <==      Total: 1
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 79290965.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@4b9e255]
+2016-09-16 10:26:29 DEBUG read:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 2 
+2016-09-16 10:26:29 DEBUG read:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG read:54 - <==      Total: 1
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 2134991632.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f416310]
+2016-09-16 10:26:29 DEBUG read:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 3 
+2016-09-16 10:26:29 DEBUG read:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG read:54 - <==      Total: 1
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 336484883.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@140e5a13]
+2016-09-16 10:26:29 DEBUG read:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 4 
+2016-09-16 10:26:29 DEBUG read:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG read:54 - <==      Total: 1
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Opening JDBC Connection
+2016-09-16 10:26:29 DEBUG PooledDataSource:54 - Created connection 1822383117.
+2016-09-16 10:26:29 DEBUG JdbcTransaction:54 - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@6c9f5c0d]
+2016-09-16 10:26:29 DEBUG read:54 - ==>  Preparing: SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos inner join address a on a.id = depos.address_id where depos.id = 5 
+2016-09-16 10:26:29 DEBUG read:54 - ==> Parameters: 
+2016-09-16 10:26:29 DEBUG read:54 - <==      Total: 1
+2016-09-16 10:26:29 INFO  root:106 - Bus Depo: Rokossovskogo, 26
+Buses: [
+Bus: number: 1,  Driver: 
+Alexey Starov;  Drivers address: Prityckogo, 21; Route: Rokossovskogo, 26 - Kalinina, 25, 
+Bus: number: 2,  Driver: 
+Vladislav Petrovich;  Drivers address: Mazurova, 20; Route: Nezavisimosty, 24 - Yakubova, 23, 
+Bus: number: 3,  Driver: 
+Mihail Petrov;  Drivers address: Nemanskaya, 19; Route: Rokossovskogo, 22 - Prityckogo, 21]
+2016-09-16 10:26:29 INFO  root:107 - Trolleybus Depo: Kalinina, 25
+Trolleybuses: [
+Trolleybus: number: 7,  Driver: 
+Konstantin Ivanov;  Drivers address: Popova, 18; Route: Mazurova, 20 - Nemanskaya, 19, 
+Trolleybus: number: 8,  Driver: 
+Filipp Karavaev;  Drivers address: Serova, 17; Route: Popova, 18 - Serova, 17, 
+Trolleybus: number: 9,  Driver: 
+Roman Krug;  Drivers address: Plehanova, 16; Route: Plehanova, 16 - Semashko, 15]
+2016-09-16 10:26:29 INFO  root:108 - Tram Depo: Nezavisimosty, 24
+Trams: [
+Tram: number: 1,  Driver: 
+Dmitry Ignatov;  Drivers address: Semashko, 15; Route: Petrovshina, 14 - Popova, 13, 
+Tram: number: 6,  Driver: 
+Artyom Petrochenkov;  Drivers address: Petrovshina, 14; Route: Serova, 12 - Plehanova, 11]
+2016-09-16 10:26:29 INFO  root:109 - Train Depo: Yakubova, 23
+Trains: [
+Train: number: 1,  Driver: 
+Oleg Pikta;  Drivers address: Popova, 13; Route: Semashko, 10 - Nemanskaya, 9, 
+Train: number: 2,  Driver: 
+Vasily Susanin;  Drivers address: Serova, 12; Route: Nemiga, 8 - Rokossovskogo, 7, 
+Train: number: 3,  Driver: 
+Maxim Sverdlov;  Drivers address: Plehanova, 11; Route: Avenue, 6 - Orlovskaya, 5]
+2016-09-16 10:26:29 INFO  root:110 - Taxi Station: Rokossovskogo, 22
+Taxis: [
+Taxi: number: 135,  Driver: 
+Alexander Novitsky;  Drivers address: Semashko, 10; Route: Surganova, 4 - Semashko, 3, 
+Taxi: number: 7788,  Driver: 
+Vladimir Berezucky;  Drivers address: Nemanskaya, 9; Route: Kalinina, 2 - Rokossovskogo, 1]
