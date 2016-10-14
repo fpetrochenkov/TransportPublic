@@ -15,7 +15,6 @@ import com.roxoft.model.depos.TaxiStation;
 
 public class TaxiStationDaoImpl implements ITaxiStationDao{
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TaxiStationDaoImpl.class);
 	
 	private  Connection connection;

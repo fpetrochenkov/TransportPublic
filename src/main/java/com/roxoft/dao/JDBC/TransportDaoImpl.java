@@ -23,7 +23,6 @@ import com.roxoft.model.transport.Trolleybus;
 
 public class TransportDaoImpl implements ITransportDao {
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TransportDaoImpl.class);
 	private  Connection connection;
 

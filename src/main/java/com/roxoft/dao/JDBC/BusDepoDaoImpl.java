@@ -14,7 +14,6 @@ import com.roxoft.model.depos.BusDepo;
 
 public class BusDepoDaoImpl implements IBusDepoDao {
 
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(BusDepoDaoImpl.class);
 
 	private Connection connection;
@@ -37,7 +36,6 @@ public class BusDepoDaoImpl implements IBusDepoDao {
 			busDepo.setName(rs.getString("name"));
 			a.setStreet(rs.getString("street"));
 			a.setHouseNumber(rs.getInt("house_number"));
-			// a = new Address();
 			busDepo.setAddress(a);
 		} catch (SQLException e) {
 			LOG.error("SQLException", e);

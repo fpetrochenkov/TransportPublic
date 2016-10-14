@@ -60,141 +60,146 @@ public class Stax {
 		Taxi taxi = null;
 		try {
 			XMLInputFactory factory = XMLInputFactory.newInstance();
-			XMLEventReader eventReader = factory.createXMLEventReader(new FileReader("src/main/resources/Transport.xml"));
+			XMLEventReader eventReader = factory
+					.createXMLEventReader(new FileReader("src/main/resources/Transport.xml"));
 			while (eventReader.hasNext()) {
 				XMLEvent event = eventReader.nextEvent();
 				switch (event.getEventType()) {
 				case XMLStreamConstants.START_ELEMENT:
-//					StartElement startElement = event.asStartElement();
-//					String qName = startElement.getName().getLocalPart();
-//					if (qName.equalsIgnoreCase("Depo")) {
-//						depo = new Depot(null, null, null);
-//						Iterator<Attribute> attributes = startElement.getAttributes();						
-//					} else if (qName.equalsIgnoreCase("Address")) {
-//						address = new Address(null, null, null, 0);
-//						System.out.print("Address: ");
-//					} else if (qName.equalsIgnoreCase("Buses")) {
-//						buses = new ArrayList<Bus>();
-//						System.out.println("Buses: ");
-////					} else if (qName.equalsIgnoreCase("Bus")) {
-////						bus = new Bus(0, null, 0, null);
-////						buses.add(bus);
-////						System.out.print("Bus: ");						
-////					} else if (qName.equalsIgnoreCase("Trolleybuses")) {
-////						trolleys = new ArrayList<Trolleybus>();
-////						System.out.println("Trolleybuses: ");
-////					} else if (qName.equalsIgnoreCase("Trolleybus")) {
-////						trolley = new Trolleybus(0, null, 0, null);
-////						trolleys.add(trolley);
-////						System.out.print("Trolley: ");						
-////					} else if (qName.equalsIgnoreCase("Trams")) {
-////						trams = new ArrayList<Tram>();
-////						System.out.println("Trams: ");
-////					} else if (qName.equalsIgnoreCase("Tram")) {
-////						tram = new Tram(0, null, 0, null);
-////						trams.add(tram);
-////						System.out.print("Tram: ");						
-////					} else if (qName.equalsIgnoreCase("Trains")) {
-////						trains = new ArrayList<Train>();
-////						System.out.println("Trains: ");
-////					} else if (qName.equalsIgnoreCase("Train")) {
-////						train = new Train(0, null, 0, null);
-////						trains.add(train);
-////						System.out.print("Train: ");						
-////					} else if (qName.equalsIgnoreCase("Taxis")) {
-////						taxis = new ArrayList<Taxi>();
-////						System.out.println("Taxis: ");
-////					} else if (qName.equalsIgnoreCase("Taxi")) {
-////						taxi = new Taxi(0, null, 0, null);
-////						taxis.add(taxi);
-////						System.out.print("Taxi: ");										
-//					} else if (qName.equalsIgnoreCase("Driver")) {
-//						driver = new Drivers(null, null, null, null, 0);
-//						System.out.print("Driver: ");						
-//					} else if (qName.equalsIgnoreCase("firstname")) {
-//						bFirstName = true;
-//					} else if (qName.equalsIgnoreCase("lastname")) {
-//						bLastName = true;
-//					} else if (qName.equalsIgnoreCase("expirience")) {
-//						bExpirience = true;
-//					} else if (qName.equalsIgnoreCase("category")) {
-//						bCategory = true;
-//					} else if (qName.equalsIgnoreCase("city")) {
-//						bCity = true;
-//					} else if (qName.equalsIgnoreCase("street")) {
-//						bStreet = true;
-//					} else if (qName.equalsIgnoreCase("zipCode")) {
-//						bZipCode = true;
-//					} else if (qName.equalsIgnoreCase("houseNumber")) {
-//						bHouseNum = true;
-//					} else if (qName.equalsIgnoreCase("number")) {
-//						bNumber = true;
-//					} else if (qName.equalsIgnoreCase("techDate")) {
-//						bTechDate = true;
-//					} else if (qName.equalsIgnoreCase("cost")) {
-//						bCost = true;
-//					}
-//
-//					break;
-//
-//				case XMLStreamConstants.CHARACTERS:
-//					Characters characters = event.asCharacters();
-//					if (bFirstName) {
-//						driver.setFirstname(characters.getData());
-//						System.out.print(characters.getData() + " ");
-//						bFirstName = false;
-//					}
-//					if (bLastName) {
-//						driver.setLastname(characters.getData());
-//						System.out.print(characters.getData() + " ");
-//						bLastName = false;
-//					}
-//					if (bCategory) {
-//						driver.setCategory(characters.getData());
-//						System.out.print("category " + characters.getData() + " ");
-//						bCategory = false;
-//					}
-//					if (bExpirience) {
-//						driver.setExpirience(Double.parseDouble(characters.getData()));
-//						System.out.println("expirience " + characters.getData());
-//						bExpirience = false;
-//					}
-//					if (bCity) {
-//						address.setCity(characters.getData());
-//						System.out.print(characters.getData() + ", ");
-//						bCity = false;
-//					}
-//					if (bStreet) {
-//						address.setStreet(characters.getData());
-//						System.out.print(characters.getData() + ", ");
-//						bStreet = false;
-//					}
-//					if (bZipCode) {
-//						address.setZipCode(characters.getData());
-//						System.out.print(characters.getData());
-//						bZipCode = false;
-//					}
-//					if (bHouseNum) {
-//						address.setHouseNumber(Integer.parseInt(characters.getData()));
-//						System.out.println(", " + characters.getData());
-//						bHouseNum = false;
-//					}
-//					if (bNumber) {
-//						bus.setNumber(Integer.parseInt(characters.getData()));
-//						System.out.print("Number " + characters.getData() + ", ");
-////						bNumber = false;
-////					}
-//					if (bTechDate) {
-//						bus.setTechDate(characters.getData());
-//						System.out.print("Tech Date: " + characters.getData() + ", ");
-//						bTechDate = false;
-//					}
-//					if (bCost) {
-//						bus.setCost(Integer.parseInt(characters.getData()));
-//						System.out.println("Cost: " + characters.getData());
-//						bCost = false;
-//					}
-//					break;
+					// StartElement startElement = event.asStartElement();
+					// String qName = startElement.getName().getLocalPart();
+					// if (qName.equalsIgnoreCase("Depo")) {
+					// depo = new Depot(null, null, null);
+					// Iterator<Attribute> attributes =
+					// startElement.getAttributes();
+					// } else if (qName.equalsIgnoreCase("Address")) {
+					// address = new Address(null, null, null, 0);
+					// System.out.print("Address: ");
+					// } else if (qName.equalsIgnoreCase("Buses")) {
+					// buses = new ArrayList<Bus>();
+					// System.out.println("Buses: ");
+					//// } else if (qName.equalsIgnoreCase("Bus")) {
+					//// bus = new Bus(0, null, 0, null);
+					//// buses.add(bus);
+					//// System.out.print("Bus: ");
+					//// } else if (qName.equalsIgnoreCase("Trolleybuses")) {
+					//// trolleys = new ArrayList<Trolleybus>();
+					//// System.out.println("Trolleybuses: ");
+					//// } else if (qName.equalsIgnoreCase("Trolleybus")) {
+					//// trolley = new Trolleybus(0, null, 0, null);
+					//// trolleys.add(trolley);
+					//// System.out.print("Trolley: ");
+					//// } else if (qName.equalsIgnoreCase("Trams")) {
+					//// trams = new ArrayList<Tram>();
+					//// System.out.println("Trams: ");
+					//// } else if (qName.equalsIgnoreCase("Tram")) {
+					//// tram = new Tram(0, null, 0, null);
+					//// trams.add(tram);
+					//// System.out.print("Tram: ");
+					//// } else if (qName.equalsIgnoreCase("Trains")) {
+					//// trains = new ArrayList<Train>();
+					//// System.out.println("Trains: ");
+					//// } else if (qName.equalsIgnoreCase("Train")) {
+					//// train = new Train(0, null, 0, null);
+					//// trains.add(train);
+					//// System.out.print("Train: ");
+					//// } else if (qName.equalsIgnoreCase("Taxis")) {
+					//// taxis = new ArrayList<Taxi>();
+					//// System.out.println("Taxis: ");
+					//// } else if (qName.equalsIgnoreCase("Taxi")) {
+					//// taxi = new Taxi(0, null, 0, null);
+					//// taxis.add(taxi);
+					//// System.out.print("Taxi: ");
+					// } else if (qName.equalsIgnoreCase("Driver")) {
+					// driver = new Drivers(null, null, null, null, 0);
+					// System.out.print("Driver: ");
+					// } else if (qName.equalsIgnoreCase("firstname")) {
+					// bFirstName = true;
+					// } else if (qName.equalsIgnoreCase("lastname")) {
+					// bLastName = true;
+					// } else if (qName.equalsIgnoreCase("expirience")) {
+					// bExpirience = true;
+					// } else if (qName.equalsIgnoreCase("category")) {
+					// bCategory = true;
+					// } else if (qName.equalsIgnoreCase("city")) {
+					// bCity = true;
+					// } else if (qName.equalsIgnoreCase("street")) {
+					// bStreet = true;
+					// } else if (qName.equalsIgnoreCase("zipCode")) {
+					// bZipCode = true;
+					// } else if (qName.equalsIgnoreCase("houseNumber")) {
+					// bHouseNum = true;
+					// } else if (qName.equalsIgnoreCase("number")) {
+					// bNumber = true;
+					// } else if (qName.equalsIgnoreCase("techDate")) {
+					// bTechDate = true;
+					// } else if (qName.equalsIgnoreCase("cost")) {
+					// bCost = true;
+					// }
+					//
+					// break;
+					//
+					// case XMLStreamConstants.CHARACTERS:
+					// Characters characters = event.asCharacters();
+					// if (bFirstName) {
+					// driver.setFirstname(characters.getData());
+					// System.out.print(characters.getData() + " ");
+					// bFirstName = false;
+					// }
+					// if (bLastName) {
+					// driver.setLastname(characters.getData());
+					// System.out.print(characters.getData() + " ");
+					// bLastName = false;
+					// }
+					// if (bCategory) {
+					// driver.setCategory(characters.getData());
+					// System.out.print("category " + characters.getData() + "
+					// ");
+					// bCategory = false;
+					// }
+					// if (bExpirience) {
+					// driver.setExpirience(Double.parseDouble(characters.getData()));
+					// System.out.println("expirience " + characters.getData());
+					// bExpirience = false;
+					// }
+					// if (bCity) {
+					// address.setCity(characters.getData());
+					// System.out.print(characters.getData() + ", ");
+					// bCity = false;
+					// }
+					// if (bStreet) {
+					// address.setStreet(characters.getData());
+					// System.out.print(characters.getData() + ", ");
+					// bStreet = false;
+					// }
+					// if (bZipCode) {
+					// address.setZipCode(characters.getData());
+					// System.out.print(characters.getData());
+					// bZipCode = false;
+					// }
+					// if (bHouseNum) {
+					// address.setHouseNumber(Integer.parseInt(characters.getData()));
+					// System.out.println(", " + characters.getData());
+					// bHouseNum = false;
+					// }
+					// if (bNumber) {
+					// bus.setNumber(Integer.parseInt(characters.getData()));
+					// System.out.print("Number " + characters.getData() + ",
+					// ");
+					//// bNumber = false;
+					//// }
+					// if (bTechDate) {
+					// bus.setTechDate(characters.getData());
+					// System.out.print("Tech Date: " + characters.getData() +
+					// ", ");
+					// bTechDate = false;
+					// }
+					// if (bCost) {
+					// bus.setCost(Integer.parseInt(characters.getData()));
+					// System.out.println("Cost: " + characters.getData());
+					// bCost = false;
+					// }
+					// break;
 
 				case XMLStreamConstants.END_ELEMENT:
 					EndElement endElement = event.asEndElement();
@@ -203,8 +208,7 @@ public class Stax {
 
 					}
 					if (endElement.getName().getLocalPart().equalsIgnoreCase("Driver")) {
-						bus.setDriver(driver);						
-						
+						bus.setDriver(driver);
 
 					}
 					if (endElement.getName().getLocalPart().equalsIgnoreCase("Bus")) {

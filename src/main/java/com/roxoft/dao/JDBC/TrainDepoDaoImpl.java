@@ -9,14 +9,13 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.roxoft.dao.ITrainDepoDao;
-import com.roxoft.dao.services.DepotService;
 import com.roxoft.model.Address;
 import com.roxoft.model.depos.TaxiStation;
 import com.roxoft.model.depos.TrainDepo;
+import com.roxoft.services.DepotService;
 
 public class TrainDepoDaoImpl implements ITrainDepoDao{
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TrainDepoDaoImpl.class);
 	
 	private  Connection connection;

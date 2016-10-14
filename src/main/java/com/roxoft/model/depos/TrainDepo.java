@@ -10,10 +10,10 @@ public class TrainDepo extends Depot {
 
 	private List<Train> trains = new ArrayList<Train>();
 
-	public TrainDepo(){
-		
+	public TrainDepo() {
+
 	}
-	
+
 	public TrainDepo(Integer id, String name, Address address) {
 		super(id, name, address);
 	}
@@ -25,9 +25,9 @@ public class TrainDepo extends Depot {
 	public void setTrains(List<Train> trains) {
 		this.trains = trains;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return getName() + ": " + getAddress().toString() + "\nTrains: " + trains.toString();
 	}
 

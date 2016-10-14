@@ -19,7 +19,6 @@ import com.roxoft.model.transport.Trolleybus;
 
 public class TrolleybusDaoImpl implements ITrolleybusDao {
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TrolleybusDaoImpl.class);
 	private  Connection connection;
 
@@ -104,7 +103,7 @@ public class TrolleybusDaoImpl implements ITrolleybusDao {
 				}
 			
 		}
-		rootLogger.info(b.toString());
+		LOG.info(b.toString());
 		return b;
 	}
 

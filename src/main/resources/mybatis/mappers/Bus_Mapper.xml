@@ -4,71 +4,79 @@
 <mapper namespace="Bus">
 
 	<select id="getAllBuses" resultType="Bus" resultMap="result">
-		SELECT  transport.number,  drivers.first_name,
-					drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber,
-                    route.id as routeId, a1.id as stopFromId,
-					a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId,
-	                a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos
-					Inner join transport_type on depos.transport_type_id=transport_type.id
-					Inner join transport on transport_type.id=transport.transport_type_id
-					Inner join route on transport.route_id=route.id
-					Inner join address a1 on a1.id = route.station_from
-					Inner join address a2 on a2.id = route.station_to
-					Inner join drivers on transport.drivers_id = drivers.id
-	                Inner join address a on a.id = drivers.address_id
-	                where transport_type.id = 1
+		SELECT
+		transport.number, drivers.first_name,
+		drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as
+		driverHouseNumber,
+		route.id as routeId, a1.id as stopFromId,
+		a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId,
+		a2.street as streetTo, a2.house_number as houseNumberTo FROM
+		schema.depos
+		Inner join transport_type on depos.transport_type_id=transport_type.id
+		Inner join transport on transport_type.id=transport.transport_type_id
+		Inner join route on transport.route_id=route.id
+		Inner join address a1 on a1.id = route.station_from
+		Inner join address a2 on a2.id = route.station_to
+		Inner join drivers on transport.drivers_id = drivers.id
+		Inner join address a on a.id = drivers.address_id
+		where transport_type.id = 1
 	</select>
 
 	<select id="getBusById" resultType="Bus" resultMap="result">
-		SELECT  transport.number,  drivers.first_name,
-					drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as driverHouseNumber,
-                    route.id as routeId, a1.id as stopFromId,
-					a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId,
-	                a2.street as streetTo, a2.house_number as houseNumberTo FROM schema.depos
-					Inner join transport_type on depos.transport_type_id=transport_type.id
-					Inner join transport on transport_type.id=transport.transport_type_id
-					Inner join route on transport.route_id=route.id
-					Inner join address a1 on a1.id = route.station_from
-					Inner join address a2 on a2.id = route.station_to
-					Inner join drivers on transport.drivers_id = drivers.id
-	                Inner join address a on a.id = drivers.address_id
-	                where transport_type.id = 1 and transport.id = #{id}
+		SELECT
+		transport.number, drivers.first_name,
+		drivers.last_name, a.id as driverAddrId, a.street as driverStreet, a.house_number as
+		driverHouseNumber,
+		route.id as routeId, a1.id as stopFromId,
+		a1.street as streetFrom, a1.house_number as houseNumberFrom, a2.id as stopToId,
+		a2.street as streetTo, a2.house_number as houseNumberTo FROM
+		schema.depos
+		Inner join transport_type on depos.transport_type_id=transport_type.id
+		Inner join transport on transport_type.id=transport.transport_type_id
+		Inner join route on transport.route_id=route.id
+		Inner join address a1 on a1.id = route.station_from
+		Inner join address a2 on a2.id = route.station_to
+		Inner join drivers on transport.drivers_id = drivers.id
+		Inner join address a on a.id = drivers.address_id
+		where transport_type.id = 1 and transport.id = #{id}
 	</select>
 
-	<insert id = "insert" parameterType = "Bus">
-		INSERT INTO schema.transport (number, transport_type_id, drivers_id, route_id)
-		VALUES (#{number}, #{transport_type_id}, #{drivers_id}, #{route_id})
-		 <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
-				select last_insert_id() as id
-		 </selectKey>
+	<insert id="insert" parameterType="Bus">
+		INSERT INTO schema.transport (number, transport_type_id, drivers_id,
+		route_id)
+		VALUES (#{number}, #{transport_type_id}, #{drivers_id},
+		#{route_id})
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select last_insert_id() as id
+		</selectKey>
 	</insert>
 
 	<resultMap id="result" type="Bus" autoMapping="false">
-					<id property="id" column="id"/>
-					<result column="number" property="number" />
-					<association property="driver" javaType="Driver">
-						<id property="id" column="id"/>
-						<result column="first_name" property="firstName" />
-						<result column="last_name" property="lastName" />
-						<association property="address" javaType="Address">
-								<id property="id" column="driverAddrId"/>
-								<result column="driverHouseNumber" property="houseNumber" />
-								<result column="driverStreet" property="street" />
-						</association>
-					</association>
-					<association property="stop" javaType="com.roxoft.model.Stops">
-						<id property="id" column="routeId"/>
-						<association property="from" javaType="Address">
-								<id property="id" column="stopFromId"/>
-								<result column="houseNumberFrom" property="houseNumber" />
-								<result column="streetFrom" property="street" />
-						</association>
-						<association property="to" javaType="Address">
-								<id property="id" column="stopToId"/>
-								<result column="houseNumberTo" property="houseNumber" />
-								<result column="streetTo" property="street" />
-						</association>
-					</association>
-			</resultMap>
+		<id property="id" column="id" />
+		<result column="number" property="number" />
+		<association property="driver" javaType="Driver">
+			<id property="id" column="id" />
+			<result column="first_name" property="firstName" />
+			<result column="last_name" property="lastName" />
+			<association property="address" javaType="Address">
+				<id property="id" column="driverAddrId" />
+				<result column="driverHouseNumber" property="houseNumber" />
+				<result column="driverStreet" property="street" />
+			</association>
+		</association>
+		<association property="stop" javaType="com.roxoft.model.Stops">
+			<id property="id" column="routeId" />
+			<association property="from" javaType="Address">
+				<id property="id" column="stopFromId" />
+				<result column="houseNumberFrom" property="houseNumber" />
+				<result column="streetFrom" property="street" />
+			</association>
+			<association property="to" javaType="Address">
+				<id property="id" column="stopToId" />
+				<result column="houseNumberTo" property="houseNumber" />
+				<result column="streetTo" property="street" />
+			</association>
+		</association>
+	</resultMap>
 
-	</mapper>
+</mapper>

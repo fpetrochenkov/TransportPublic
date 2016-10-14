@@ -8,11 +8,11 @@ import com.roxoft.dao.IDepotDao;
 import com.roxoft.model.Address;
 import com.roxoft.model.depos.Depot;
 
-public class DepotDaoImpl extends SessionFactory implements IDepotDao {
+public class DepotDaoImpl implements IDepotDao {
 
 	@Override
-	public void create(Depot entity){
-		SqlSession session = SessionFactory.getSession();
+	public void create(Depot entity) {
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {
 			session.insert("Depot.insert", entity);
 			session.commit();
@@ -24,7 +24,7 @@ public class DepotDaoImpl extends SessionFactory implements IDepotDao {
 
 	@Override
 	public void delete(int id) {
-		SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {
 			session.insert("Depot.deleteDepotById", id);
 			session.commit();
@@ -32,7 +32,5 @@ public class DepotDaoImpl extends SessionFactory implements IDepotDao {
 			session.close();
 		}
 	}
-
-
 
 }

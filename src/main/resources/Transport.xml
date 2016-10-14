@@ -1,190 +1,333 @@
 <Depos>
-  <Depo>
-    <name>Bus Depot</name>
-    <address>
-      <city>Minsk</city> <street>Rokossovskogo</street> <zipCode>228144</zipCode> <houseNumber>7</houseNumber>
-    </address>
-    <buses>
-      <bus>
-        <number>1</number> <techDate>20.07.2016</techDate> <cost>5000</cost>
-        <driver>
-          <firstname>Alexey</firstname> <lastname>Ivanov</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Prityckogo</street> <zipCode>220018</zipCode> <houseNumber>4</houseNumber>
-          </address>
-        </driver>
-      </bus>
-      <bus>
-        <number>2</number> <techDate>25.07.2016</techDate> <cost>5000</cost>
-        <driver>
-            <firstname>Vladislav</firstname> <lastname>Karavaev</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Mazurova</street> <zipCode>220018</zipCode> <houseNumber>5</houseNumber>
-          </address>
-        </driver>
-      </bus>
-      <bus>
-          <number>3</number> <techDate>29.07.2016</techDate> <cost>5000</cost>
-        <driver>
-          <firstname>Mihail</firstname> <lastname>Krug</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-            <city>Minsk</city> <street>Nemanskaya</street> <zipCode>220019</zipCode> <houseNumber>8</houseNumber>
-          </address>
-        </driver>
-      </bus>
-      <bus>
-          <number>4</number> <techDate>30.07.2016</techDate> <cost>5000</cost>
-        <driver>
-          <firstname>Alexander</firstname> <lastname>Ivanov</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Kamenskaya</street> <zipCode>220020</zipCode> <houseNumber>1</houseNumber>
-          </address>
-        </driver>
-      </bus>
-    </buses>
-  </Depo>
+	<Depo>
+		<name>Bus Depot</name>
+		<address>
+			<city>Minsk</city>
+			<street>Rokossovskogo</street>
+			<zipCode>228144</zipCode>
+			<houseNumber>7</houseNumber>
+		</address>
+		<buses>
+			<bus>
+				<number>1</number>
+				<techDate>20.07.2016</techDate>
+				<cost>5000</cost>
+				<driver>
+					<firstname>Alexey</firstname>
+					<lastname>Ivanov</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Prityckogo</street>
+						<zipCode>220018</zipCode>
+						<houseNumber>4</houseNumber>
+					</address>
+				</driver>
+			</bus>
+			<bus>
+				<number>2</number>
+				<techDate>25.07.2016</techDate>
+				<cost>5000</cost>
+				<driver>
+					<firstname>Vladislav</firstname>
+					<lastname>Karavaev</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Mazurova</street>
+						<zipCode>220018</zipCode>
+						<houseNumber>5</houseNumber>
+					</address>
+				</driver>
+			</bus>
+			<bus>
+				<number>3</number>
+				<techDate>29.07.2016</techDate>
+				<cost>5000</cost>
+				<driver>
+					<firstname>Mihail</firstname>
+					<lastname>Krug</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Nemanskaya</street>
+						<zipCode>220019</zipCode>
+						<houseNumber>8</houseNumber>
+					</address>
+				</driver>
+			</bus>
+			<bus>
+				<number>4</number>
+				<techDate>30.07.2016</techDate>
+				<cost>5000</cost>
+				<driver>
+					<firstname>Alexander</firstname>
+					<lastname>Ivanov</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Kamenskaya</street>
+						<zipCode>220020</zipCode>
+						<houseNumber>1</houseNumber>
+					</address>
+				</driver>
+			</bus>
+		</buses>
+	</Depo>
 
-  <Depo>
-    <name>Trolleybus Depo</name>
-    <address>
-      <city>Minsk</city> <street>Kalinina</street> <zipCode>220012</zipCode> <houseNumber>5</houseNumber>
-    </address>
-    <trolleybuses>
-      <trolleybus>
-        <number>8</number> <techDate>20.07.2016</techDate> <cost>5500</cost>
-        <driver>
-            <firstname>Konstantin</firstname> <lastname>Ignatov</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-            <city>Minsk</city> <street>Popova</street> <zipCode>220120</zipCode> <houseNumber>5</houseNumber>
-          </address>
-        </driver>
-      </trolleybus>
-      <trolleybus>
-        <number>9</number> <techDate>25.07.2016</techDate> <cost>5500</cost>
-        <driver>
-            <firstname>Filipp</firstname> <lastname>Petrochenkov</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Serova</street> <zipCode>220022</zipCode> <houseNumber>6</houseNumber>
-          </address>
-        </driver>
-      </trolleybus>
-      <trolleybus>
-        <number>7</number> <techDate>28.07.2016</techDate> <cost>5500</cost>
-        <driver>
-          <firstname>Roman</firstname> <lastname>Pikta</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Plehanova</street> <zipCode>228124</zipCode> <houseNumber>1</houseNumber>
-          </address>
-        </driver>
-      </trolleybus>
-      <trolleybus>
-        <number>6</number> <techDate>30.07.2016</techDate> <cost>5500</cost>
-        <driver>
-          <firstname>Yury</firstname> <lastname>Berezovsky</lastname> <category>D</category> <expirience>5.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Prityckogo</street> <zipCode>220018</zipCode> <houseNumber>4</houseNumber>
-          </address>
-        </driver>
-      </trolleybus>
-    </trolleybuses>
-  </Depo>
+	<Depo>
+		<name>Trolleybus Depo</name>
+		<address>
+			<city>Minsk</city>
+			<street>Kalinina</street>
+			<zipCode>220012</zipCode>
+			<houseNumber>5</houseNumber>
+		</address>
+		<trolleybuses>
+			<trolleybus>
+				<number>8</number>
+				<techDate>20.07.2016</techDate>
+				<cost>5500</cost>
+				<driver>
+					<firstname>Konstantin</firstname>
+					<lastname>Ignatov</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Popova</street>
+						<zipCode>220120</zipCode>
+						<houseNumber>5</houseNumber>
+					</address>
+				</driver>
+			</trolleybus>
+			<trolleybus>
+				<number>9</number>
+				<techDate>25.07.2016</techDate>
+				<cost>5500</cost>
+				<driver>
+					<firstname>Filipp</firstname>
+					<lastname>Petrochenkov</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Serova</street>
+						<zipCode>220022</zipCode>
+						<houseNumber>6</houseNumber>
+					</address>
+				</driver>
+			</trolleybus>
+			<trolleybus>
+				<number>7</number>
+				<techDate>28.07.2016</techDate>
+				<cost>5500</cost>
+				<driver>
+					<firstname>Roman</firstname>
+					<lastname>Pikta</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Plehanova</street>
+						<zipCode>228124</zipCode>
+						<houseNumber>1</houseNumber>
+					</address>
+				</driver>
+			</trolleybus>
+			<trolleybus>
+				<number>6</number>
+				<techDate>30.07.2016</techDate>
+				<cost>5500</cost>
+				<driver>
+					<firstname>Yury</firstname>
+					<lastname>Berezovsky</lastname>
+					<category>D</category>
+					<expirience>5.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Prityckogo</street>
+						<zipCode>220018</zipCode>
+						<houseNumber>4</houseNumber>
+					</address>
+				</driver>
+			</trolleybus>
+		</trolleybuses>
+	</Depo>
 
-  <Depo>
-    <name>Tram Depo</name>
-    <address>
-      <city>Minsk</city> <street>Nezavisimosty</street> <zipCode>221222</zipCode> <houseNumber>145</houseNumber>
-    </address>
-    <trams>
-      <tram>
-        <number>1</number> <techDate>20.07.2016</techDate> <cost>6000</cost>
-        <driver>
-            <firstname>Dmitry</firstname> <lastname>Susanin</lastname> <category>D</category> <expirience>6</expirience>
-          <address>
-              <city>Minsk</city> <street>Semashko</street> <zipCode>220001</zipCode> <houseNumber>2</houseNumber>
-          </address>
-        </driver>
-      </tram>
-      <tram>
-        <number>6</number> <techDate>25.07.2016</techDate> <cost>6000</cost>
-        <driver>
-          <firstname>Artyom</firstname> <lastname>Sverdlov</lastname> <category>D</category> <expirience>4</expirience>
-          <address>
-              <city>Minsk</city> <street>Petrovshina</street> <zipCode>220004</zipCode> <houseNumber>1</houseNumber>
-          </address>
-        </driver>
-      </tram>
-    </trams>
-  </Depo>
+	<Depo>
+		<name>Tram Depo</name>
+		<address>
+			<city>Minsk</city>
+			<street>Nezavisimosty</street>
+			<zipCode>221222</zipCode>
+			<houseNumber>145</houseNumber>
+		</address>
+		<trams>
+			<tram>
+				<number>1</number>
+				<techDate>20.07.2016</techDate>
+				<cost>6000</cost>
+				<driver>
+					<firstname>Dmitry</firstname>
+					<lastname>Susanin</lastname>
+					<category>D</category>
+					<expirience>6</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Semashko</street>
+						<zipCode>220001</zipCode>
+						<houseNumber>2</houseNumber>
+					</address>
+				</driver>
+			</tram>
+			<tram>
+				<number>6</number>
+				<techDate>25.07.2016</techDate>
+				<cost>6000</cost>
+				<driver>
+					<firstname>Artyom</firstname>
+					<lastname>Sverdlov</lastname>
+					<category>D</category>
+					<expirience>4</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Petrovshina</street>
+						<zipCode>220004</zipCode>
+						<houseNumber>1</houseNumber>
+					</address>
+				</driver>
+			</tram>
+		</trams>
+	</Depo>
 
-  <Depo>
-    <name>Train Depo</name>
-    <address>
-      <city>Minsk</city> <street>Yakubova</street> <zipCode>220124</zipCode> <houseNumber>8</houseNumber>
-    </address>
-    <trains>
-      <train>
-        <number>1</number> <techDate>20.07.2016</techDate> <cost>40000</cost>
-        <driver>
-            <firstname>Vasily</firstname> <lastname>Berezucky</lastname> <category>E</category> <expirience>10</expirience>
-          <address>
-              <city>Minsk</city> <street>Kalinina</street> <zipCode>220012</zipCode> <houseNumber>1</houseNumber>
-          </address>
-        </driver>
-      </train>
-      <train>
-        <number>2</number> <techDate>25.07.2016</techDate> <cost>40000</cost>
-        <driver>
-          <firstname>Oleg</firstname> <lastname>Novitsky</lastname> <category>E</category> <expirience>15</expirience>
-          <address>
-            <city>Minsk</city> <street>Stalina</street> <zipCode>220016</zipCode> <houseNumber>7</houseNumber>
-          </address>
-        </driver>
-      </train>
-      <train>
-          <number>3</number> <techDate>25.07.2016</techDate> <cost>40000</cost>
-        <driver>
-            <firstname>Maxim</firstname> <lastname>Starov</lastname> <category>E</category> <expirience>8</expirience>
-          <address>
-            <city>Minsk</city> <street>Poluha</street> <zipCode>220011</zipCode> <houseNumber>10</houseNumber>
-          </address>
-        </driver>
-      </train>
-      <train>
-        <number>4</number> <techDate>20.07.2016</techDate> <cost>40000</cost>
-        <driver>
-          <firstname>Vyacheslav</firstname> <lastname>Zaycev</lastname> <category>E</category> <expirience>7</expirience>
-          <address>
-              <city>Minsk</city> <street>Olesheva</street> <zipCode>220020</zipCode> <houseNumber>34</houseNumber>
-          </address>
-        </driver>
-      </train>
-    </trains>
-  </Depo>
+	<Depo>
+		<name>Train Depo</name>
+		<address>
+			<city>Minsk</city>
+			<street>Yakubova</street>
+			<zipCode>220124</zipCode>
+			<houseNumber>8</houseNumber>
+		</address>
+		<trains>
+			<train>
+				<number>1</number>
+				<techDate>20.07.2016</techDate>
+				<cost>40000</cost>
+				<driver>
+					<firstname>Vasily</firstname>
+					<lastname>Berezucky</lastname>
+					<category>E</category>
+					<expirience>10</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Kalinina</street>
+						<zipCode>220012</zipCode>
+						<houseNumber>1</houseNumber>
+					</address>
+				</driver>
+			</train>
+			<train>
+				<number>2</number>
+				<techDate>25.07.2016</techDate>
+				<cost>40000</cost>
+				<driver>
+					<firstname>Oleg</firstname>
+					<lastname>Novitsky</lastname>
+					<category>E</category>
+					<expirience>15</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Stalina</street>
+						<zipCode>220016</zipCode>
+						<houseNumber>7</houseNumber>
+					</address>
+				</driver>
+			</train>
+			<train>
+				<number>3</number>
+				<techDate>25.07.2016</techDate>
+				<cost>40000</cost>
+				<driver>
+					<firstname>Maxim</firstname>
+					<lastname>Starov</lastname>
+					<category>E</category>
+					<expirience>8</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Poluha</street>
+						<zipCode>220011</zipCode>
+						<houseNumber>10</houseNumber>
+					</address>
+				</driver>
+			</train>
+			<train>
+				<number>4</number>
+				<techDate>20.07.2016</techDate>
+				<cost>40000</cost>
+				<driver>
+					<firstname>Vyacheslav</firstname>
+					<lastname>Zaycev</lastname>
+					<category>E</category>
+					<expirience>7</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Olesheva</street>
+						<zipCode>220020</zipCode>
+						<houseNumber>34</houseNumber>
+					</address>
+				</driver>
+			</train>
+		</trains>
+	</Depo>
 
-  <Depo>
-    <name>Taxi station</name>
-    <address>
-        <city>Minsk</city> <street>Rokossovskogo</street> <zipCode>228144</zipCode> <houseNumber>7</houseNumber>
-    </address>
-    <taxis>
-      <taxi>
-        <number>135</number> <techDate>20.07.2016</techDate> <cost>70000</cost>
-        <driver>
-          <firstname>Alexander</firstname> <lastname>Petrovich</lastname> <category>B</category> <expirience>2.5</expirience>
-          <address>
-              <city>Minsk</city> <street>Plehanova</street> <zipCode>228124</zipCode> <houseNumber>1</houseNumber>
-          </address>
-        </driver>
-      </taxi>
-      <taxi>
-          <number>7788</number> <techDate>25.07.2016</techDate> <cost>70000</cost>
-        <driver>
-          <firstname>Vladimir</firstname> <lastname>Petrov</lastname> <category>B</category> <expirience>3</expirience>
-          <address>
-              <city>Minsk</city> <street>Nemanskaya</street> <zipCode>220019</zipCode> <houseNumber>8</houseNumber>
-          </address>
-        </driver>
-      </taxi>
-    </taxis>
-  </Depo>
+	<Depo>
+		<name>Taxi station</name>
+		<address>
+			<city>Minsk</city>
+			<street>Rokossovskogo</street>
+			<zipCode>228144</zipCode>
+			<houseNumber>7</houseNumber>
+		</address>
+		<taxis>
+			<taxi>
+				<number>135</number>
+				<techDate>20.07.2016</techDate>
+				<cost>70000</cost>
+				<driver>
+					<firstname>Alexander</firstname>
+					<lastname>Petrovich</lastname>
+					<category>B</category>
+					<expirience>2.5</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Plehanova</street>
+						<zipCode>228124</zipCode>
+						<houseNumber>1</houseNumber>
+					</address>
+				</driver>
+			</taxi>
+			<taxi>
+				<number>7788</number>
+				<techDate>25.07.2016</techDate>
+				<cost>70000</cost>
+				<driver>
+					<firstname>Vladimir</firstname>
+					<lastname>Petrov</lastname>
+					<category>B</category>
+					<expirience>3</expirience>
+					<address>
+						<city>Minsk</city>
+						<street>Nemanskaya</street>
+						<zipCode>220019</zipCode>
+						<houseNumber>8</houseNumber>
+					</address>
+				</driver>
+			</taxi>
+		</taxis>
+	</Depo>
 </Depos>

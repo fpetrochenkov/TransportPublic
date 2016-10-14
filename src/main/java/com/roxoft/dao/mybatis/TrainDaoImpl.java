@@ -11,47 +11,47 @@ import com.roxoft.dao.ITrainDao;
 import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Train;
 
-public class TrainDaoImpl extends SessionFactory implements ITrainDao{
-	
-	private static final Logger rootLogger = LogManager.getRootLogger();
+public class TrainDaoImpl  implements ITrainDao {
+
+	private static final Logger LOG = LogManager.getRootLogger();
 
 	@Override
-	public void create(Train entity)  {
-		SqlSession session = SessionFactory.getSession();
-		try {		
+	public void create(Train entity) {
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
+		try {
 			session.insert("Train.insert", entity);
 			session.commit();
 		} finally {
 			session.close();
 		}
-		
+
 	}
 
 	@Override
-	public Train read(int key)  {
+	public Train read(int key) {
 		Train train;
-        SqlSession session = SessionFactory.getSession();
-        try {
-        	train = session.selectOne("Train.getTrainById", key);
-        session.commit();
-        } finally {
-        	session.close();
-        }
-        rootLogger.info(train.toString());
-        return train;
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
+		try {
+			train = session.selectOne("Train.getTrainById", key);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		LOG.info(train.toString());
+		return train;
 	}
 
 	@Override
-	public List<Train> getAll()  {
+	public List<Train> getAll() {
 		List<Train> list;
-		SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {
-        list = session.selectList("Train.getAllTrains");
-        session.commit();
+			list = session.selectList("Train.getAllTrains");
+			session.commit();
 		} finally {
-        session.close();
+			session.close();
 		}
-        return list;
+		return list;
 	}
 
 }

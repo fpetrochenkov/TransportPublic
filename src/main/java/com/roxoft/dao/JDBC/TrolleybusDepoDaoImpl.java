@@ -15,7 +15,6 @@ import com.roxoft.model.depos.TrolleybusDepo;
 
 public class TrolleybusDepoDaoImpl implements ITrolleybusDepoDao{
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TrolleybusDepoDaoImpl.class);
 	
 	private  Connection connection;

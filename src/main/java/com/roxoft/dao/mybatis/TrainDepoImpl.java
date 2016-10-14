@@ -12,27 +12,24 @@ import com.roxoft.model.depos.BusDepo;
 import com.roxoft.model.depos.TrainDepo;
 import com.roxoft.model.transport.Train;
 
-public class TrainDepoImpl extends SessionFactory implements ITrainDepoDao{
-	
-	private static final Logger rootLogger = LogManager.getRootLogger();
+public class TrainDepoImpl  implements ITrainDepoDao {
 
-	TrainDaoImpl t = new TrainDaoImpl();
-	
+	private static final Logger LOG = LogManager.getRootLogger();
+
 	@Override
-	public TrainDepo read(){
+	public TrainDepo read() {
+		TrainDaoImpl t = new TrainDaoImpl();
 		TrainDepo trainDepo;
-        SqlSession session = SessionFactory.getSession();
-        try {
-        trainDepo = session.selectOne("TrainDepo.getTrainDepoById");
-        session.commit();
-        } finally {
-        	session.close();
-        }
-        trainDepo.setTrains(t.getAll());
-        rootLogger.info(trainDepo.toString());
-        return trainDepo;
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
+		try {
+			trainDepo = session.selectOne("TrainDepo.getTrainDepoById");
+			session.commit();
+		} finally {
+			session.close();
+		}
+		trainDepo.setTrains(t.getAll());
+		LOG.info(trainDepo.toString());
+		return trainDepo;
 	}
-
-
 
 }

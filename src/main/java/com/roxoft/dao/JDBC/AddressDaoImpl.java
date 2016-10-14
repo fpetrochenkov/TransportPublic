@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.roxoft.dao.IAddressDao;
@@ -15,7 +13,6 @@ import com.roxoft.model.Address;
 
 public class AddressDaoImpl implements IAddressDao {
 
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(AddressDaoImpl.class);
 
 	private Connection connection;
@@ -52,7 +49,7 @@ public class AddressDaoImpl implements IAddressDao {
 				}
 
 		}
-		rootLogger.info(list.toString());
+		LOG.info(list.toString());
 		return list;
 	}
 
@@ -101,7 +98,7 @@ public class AddressDaoImpl implements IAddressDao {
 					LOG.error("SQLException", e);
 				}
 		}
-		rootLogger.info(g.toString());
+		LOG.info(g.toString());
 		return g;
 
 	}

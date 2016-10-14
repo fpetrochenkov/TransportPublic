@@ -12,7 +12,7 @@ import com.roxoft.model.depos.BusDepo;
 import com.roxoft.model.depos.TramDepo;
 import com.roxoft.model.transport.Tram;
 
-public class TramDepoImpl extends SessionFactory implements ITramDepoDao{
+public class TramDepoImpl  implements ITramDepoDao{
 
 	private static final Logger rootLogger = LogManager.getRootLogger();
 	
@@ -21,7 +21,7 @@ public class TramDepoImpl extends SessionFactory implements ITramDepoDao{
 	@Override
 	public TramDepo read()  {
 		TramDepo tramDepo;
-        SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
         try {
         tramDepo = session.selectOne("TramDepo.getTramDepoById");
         session.commit();

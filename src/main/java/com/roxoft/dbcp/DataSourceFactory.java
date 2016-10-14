@@ -11,8 +11,8 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class DataSourceFactory {
-	
-    private static final Logger LOG = Logger.getLogger(DataSourceFactory.class);
+
+	private static final Logger LOG = Logger.getLogger(DataSourceFactory.class);
 	private static Connection connection = null;
 	private static BasicDataSource dataSource = null;
 

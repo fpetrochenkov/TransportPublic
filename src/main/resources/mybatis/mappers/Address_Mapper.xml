@@ -10,8 +10,8 @@
 	</resultMap>
 
 	<select id="getAllAddresses" resultType="Address" resultMap="result">
-      SELECT * FROM schema.address
-    </select>
+		SELECT * FROM schema.address
+	</select>
 
 	<select id="getAddressById" resultType="Address" resultMap="result">
 		SELECT * FROM schema.address WHERE id = #{id}
@@ -21,11 +21,12 @@
 		DELETE FROM schema.address WHERE id= #{id}
 	</delete>
 
-	<insert id = "insert" parameterType = "Address">
-		 INSERT INTO schema.address (street, house_number) VALUES (#{street}, #{house_number});
-		 <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
-				select last_insert_id() as id
-		 </selectKey>
+	<insert id="insert" parameterType="Address">
+		INSERT INTO schema.address (street, house_number) VALUES (#{street},
+		#{house_number});
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select last_insert_id() as id
+		</selectKey>
 	</insert>
 
 </mapper>

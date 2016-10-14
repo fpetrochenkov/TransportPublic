@@ -4,37 +4,44 @@
 <mapper namespace="Driver">
 
 	<select id="getAllDrivers" resultType="Driver" resultMap="result">
-		SELECT drivers.first_name, drivers.last_name, address.street, address.house_number
+		SELECT
+		drivers.first_name, drivers.last_name, address.street,
+		address.house_number
 		from schema.drivers
-		inner join address on drivers.address_id = address.id
+		inner join address on
+		drivers.address_id = address.id
 	</select>
 
 	<select id="getDriverById" resultType="Driver" resultMap="result">
-		SELECT drivers.first_name, drivers.last_name, address.street, address.house_number
+		SELECT
+		drivers.first_name, drivers.last_name, address.street,
+		address.house_number
 		from schema.drivers
-		inner join address on drivers.address_id = address.id WHERE drivers.id = #{id}
+		inner join address on
+		drivers.address_id = address.id WHERE drivers.id = #{id}
 	</select>
 
 	<delete id="deleteDriverById">
 		DELETE * FROM schema.drivers WHERE id= #{id}
 	</delete>
 
-	<insert id = "insert" parameterType = "Driver">
-		INSERT INTO schema.drivers (first_name, last_name, Address_id) VALUES (#{first_name}, #{last_name}, #{Address_id})
-		 <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
-				select last_insert_id() as id
-		 </selectKey>
+	<insert id="insert" parameterType="Driver">
+		INSERT INTO schema.drivers (first_name, last_name, Address_id) VALUES
+		(#{first_name}, #{last_name}, #{Address_id})
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select last_insert_id() as id
+		</selectKey>
 	</insert>
 
 	<resultMap id="result" type="Driver" autoMapping="false">
-					<id property="id" column="id"/>
-					<result column="first_name" property="firstName" />
-					<result column="last_name" property="lastName" />
-					<association property="address" javaType="Address">
-							<id property="id" column="address.id"/>
-							<result column="house_number" property="houseNumber" />
-							<result column="street" property="street" />
-					</association>
-			</resultMap>
+		<id property="id" column="id" />
+		<result column="first_name" property="firstName" />
+		<result column="last_name" property="lastName" />
+		<association property="address" javaType="Address">
+			<id property="id" column="address.id" />
+			<result column="house_number" property="houseNumber" />
+			<result column="street" property="street" />
+		</association>
+	</resultMap>
 
 </mapper>

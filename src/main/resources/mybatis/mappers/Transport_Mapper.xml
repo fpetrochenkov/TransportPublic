@@ -4,7 +4,7 @@
 <mapper namespace="Transport">
 
 	<delete id="deleteTransportById">
-	DELETE  FROM mydb.transport WHERE id = #{id}
+		DELETE FROM mydb.transport WHERE id = #{id}
 	</delete>
 
 </mapper>

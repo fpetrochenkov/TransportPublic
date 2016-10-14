@@ -11,47 +11,47 @@ import com.roxoft.dao.IBusDao;
 import com.roxoft.model.Address;
 import com.roxoft.model.transport.Bus;
 
-public class BusDaoImpl extends SessionFactory implements IBusDao{
-	
-	private static final Logger rootLogger = LogManager.getRootLogger();
+public class BusDaoImpl  implements IBusDao {
+
+	private static final Logger LOG = LogManager.getRootLogger();
 
 	@Override
 	public void create(Bus entity) {
-		SqlSession session = SessionFactory.getSession();
-		try {		
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
+		try {
 			session.insert("Bus.insert", entity);
 			session.commit();
 		} finally {
 			session.close();
 		}
-		
+
 	}
 
 	@Override
 	public Bus read(int key) {
 		Bus bus;
-        SqlSession session = SessionFactory.getSession();
-        try {
-        bus = session.selectOne("Bus.getBusById", key);
-        session.commit();
-        } finally {
-        	session.close();
-        }
-        rootLogger.info(bus.toString());
-        return bus;
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
+		try {
+			bus = session.selectOne("Bus.getBusById", key);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		LOG.info(bus.toString());
+		return bus;
 	}
 
 	@Override
 	public List<Bus> getAll() {
 		List<Bus> list;
-		SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {
-        list = session.selectList("Bus.getAllBuses");
-        session.commit();
+			list = session.selectList("Bus.getAllBuses");
+			session.commit();
 		} finally {
-        session.close();
+			session.close();
 		}
-        return list;
+		return list;
 	}
 
 }

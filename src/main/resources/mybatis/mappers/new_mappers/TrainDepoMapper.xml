@@ -2,19 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.roxoft.dao.ITrainDepoDao">
-  <resultMap id="result" type="TrainDepo" autoMapping="false">
-          <id property="id" column="id"/>
-          <result column="name" property="name" />
-          <association property="address" javaType="Address">
-            <id property="id" column="depoAddrId"/>
-            <result column="depoHouseNumber" property="houseNumber" />
-            <result column="depoStreet" property="street" />
-          </association>
-        </resultMap>
+	<resultMap id="result" type="TrainDepo" autoMapping="false">
+		<id property="id" column="id" />
+		<result column="name" property="name" />
+		<association property="address" javaType="Address">
+			<id property="id" column="depoAddrId" />
+			<result column="depoHouseNumber" property="houseNumber" />
+			<result column="depoStreet" property="street" />
+		</association>
+	</resultMap>
 
-    <select id="read" resultMap="result">
-      SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos
-    inner join address a on a.id = depos.address_id
-    where depos.id = 4
-    </select>
+	<select id="read" resultMap="result">
+		SELECT name, a.street as depoStreet,
+		a.house_number as depoHouseNumber from
+		schema.depos
+		inner join address a
+		on a.id = depos.address_id
+		where depos.id = 4
+	</select>
 </mapper>

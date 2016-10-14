@@ -16,7 +16,6 @@ import com.roxoft.model.Driver;
 
 public class DriversDaoImpl implements IDriversDao {
 
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(DriversDaoImpl.class);
 	private  Connection connection;
 
@@ -79,7 +78,7 @@ public class DriversDaoImpl implements IDriversDao {
 				}
 			
 		}
-		rootLogger.info(d.toString());
+		LOG.info(d.toString());
 		return d;
 	}
 
@@ -139,7 +138,7 @@ public class DriversDaoImpl implements IDriversDao {
 				}
 			
 		}
-		rootLogger.info(list.toString());
+		LOG.info(list.toString());
 		return list;
 	}
 

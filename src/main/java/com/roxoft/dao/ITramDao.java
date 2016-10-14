@@ -4,10 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 import com.roxoft.model.transport.Tram;
 
-public interface ITramDao <E,K> {
+public interface ITramDao{
 
-	
 	public void create(Tram entity);
-	public Tram read(int key);	
+
+	public Tram read(int key);
+
 	public List<Tram> getAll();
 }

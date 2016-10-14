@@ -6,7 +6,7 @@ import java.util.List;
 import com.roxoft.model.Address;
 import com.roxoft.model.depos.Depot;
 
-public interface IDepotDao <E, K>{
+public interface IDepotDao{
 	
 	public void delete(int id);
 	public void create(Depot entity);

@@ -3,19 +3,20 @@
 
 <mapper namespace="TramDepo">
 
-  <select id="getTramDepoById" resultType="TramDepo" resultMap="result">
-    SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber from schema.depos
-  inner join address a on a.id = depos.address_id
-  where depos.id = 3
+	<select id="getTramDepoById" resultType="TramDepo" resultMap="result">
+		SELECT name, a.street as depoStreet, a.house_number as depoHouseNumber
+		from schema.depos
+		inner join address a on a.id = depos.address_id
+		where depos.id = 3
 	</select>
 
-  <resultMap id="result" type="TramDepo" autoMapping="false">
-          <id property="id" column="id"/>
-          <result column="name" property="name" />
-          <association property="address" javaType="Address">
-            <id property="id" column="depoAddrId"/>
-            <result column="depoHouseNumber" property="houseNumber" />
-            <result column="depoStreet" property="street" />
-          </association>
-        </resultMap>
-  </mapper>
+	<resultMap id="result" type="TramDepo" autoMapping="false">
+		<id property="id" column="id" />
+		<result column="name" property="name" />
+		<association property="address" javaType="Address">
+			<id property="id" column="depoAddrId" />
+			<result column="depoHouseNumber" property="houseNumber" />
+			<result column="depoStreet" property="street" />
+		</association>
+	</resultMap>
+</mapper>

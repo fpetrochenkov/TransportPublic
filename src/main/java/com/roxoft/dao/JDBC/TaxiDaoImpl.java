@@ -19,7 +19,6 @@ import com.roxoft.model.transport.Taxi;
 
 public class TaxiDaoImpl implements ITaxiDao {
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TaxiDaoImpl.class);
 	private final Connection connection;
 
@@ -96,7 +95,7 @@ public class TaxiDaoImpl implements ITaxiDao {
 				}
 			
 		}
-		rootLogger.info(b.toString());
+		LOG.info(b.toString());
 		return b;
 	}
 

@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import com.roxoft.model.transport.Bus;
 
-public interface IBusDao <E,K>{
+public interface IBusDao {
 
 	public void create(Bus entity);
-	public Bus read(int key);		
+
+	public Bus read(int key);
+
 	public List<Bus> getAll();
-	
-	
+
 }

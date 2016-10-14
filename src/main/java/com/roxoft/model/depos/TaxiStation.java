@@ -7,11 +7,11 @@ import com.roxoft.model.Address;
 import com.roxoft.model.transport.Taxi;
 
 public class TaxiStation extends Depot {
-	
+
 	private List<Taxi> taxis = new ArrayList<Taxi>();
-	
+
 	public TaxiStation() {
-		
+
 	}
 
 	public TaxiStation(Integer id, String name, Address address) {
@@ -25,9 +25,9 @@ public class TaxiStation extends Depot {
 	public void setTaxis(List<Taxi> taxis) {
 		this.taxis = taxis;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return getName() + ": " + getAddress().toString() + "\nTaxis: " + taxis.toString();
-	}	
+	}
 }

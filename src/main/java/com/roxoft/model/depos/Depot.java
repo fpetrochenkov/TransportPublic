@@ -7,9 +7,9 @@ public abstract class Depot {
 	private Integer id;
 	private String name;
 	private Address address = new Address();
-	
+
 	public Depot() {
-		
+
 	}
 
 	public Depot(Integer id, String name, Address address) {

@@ -12,7 +12,7 @@ import com.roxoft.model.depos.BusDepo;
 import com.roxoft.model.depos.TrolleybusDepo;
 import com.roxoft.model.transport.Trolleybus;
 
-public class TrolleybusDepoImpl extends SessionFactory implements ITrolleybusDepoDao{
+public class TrolleybusDepoImpl implements ITrolleybusDepoDao{
 	
 	private static final Logger rootLogger = LogManager.getRootLogger();
 
@@ -21,7 +21,7 @@ public class TrolleybusDepoImpl extends SessionFactory implements ITrolleybusDep
 	@Override
 	public TrolleybusDepo read()  {
 		TrolleybusDepo trolleybusDepo;
-        SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
         try {
         trolleybusDepo = session.selectOne("TrolleybusDepo.getTrolleybusDepoById");
         session.commit();

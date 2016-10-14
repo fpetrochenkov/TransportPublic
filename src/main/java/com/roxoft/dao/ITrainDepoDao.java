@@ -6,5 +6,5 @@ import java.util.List;
 import com.roxoft.model.depos.TrainDepo;
 
 public interface ITrainDepoDao {
-	public TrainDepo read();		
+	public TrainDepo read();
 }

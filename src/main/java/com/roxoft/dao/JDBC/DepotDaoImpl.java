@@ -12,7 +12,6 @@ import com.roxoft.model.depos.Depot;
 
 public class DepotDaoImpl implements IDepotDao {
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(DepotDaoImpl.class);
 	private Connection connection;
 

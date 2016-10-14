@@ -7,11 +7,13 @@
 		DELETE FROM schema.depos WHERE id= #{id}
 	</delete>
 
-	<insert id = "insert" parameterType = "Depot">
-		 INSERT INTO schema.depos (name, address_id, transport_type_id) VALUES (#{name}, #{address_id}, #{transport_type_id});
-		 <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
-				select last_insert_id() as id
-		 </selectKey>
+	<insert id="insert" parameterType="Depot">
+		INSERT INTO schema.depos (name, address_id, transport_type_id) VALUES
+		(#{name}, #{address_id}, #{transport_type_id});
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select
+			last_insert_id() as id
+		</selectKey>
 	</insert>
 
 </mapper>

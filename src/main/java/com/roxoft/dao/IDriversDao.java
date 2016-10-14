@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import com.roxoft.model.Driver;
 
-public interface IDriversDao <E, K>{
+public interface IDriversDao{
 	
 	public void create(Driver entity);
 	public Driver read(int key);	

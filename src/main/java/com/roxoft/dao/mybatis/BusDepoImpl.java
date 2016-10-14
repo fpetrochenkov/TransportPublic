@@ -12,16 +12,15 @@ import com.roxoft.main.Main;
 import com.roxoft.model.depos.BusDepo;
 import com.roxoft.model.transport.Bus;
 
-public class BusDepoImpl extends SessionFactory implements IBusDepoDao {
-	
-	private static final Logger rootLogger = LogManager.getRootLogger();
+public class BusDepoImpl implements IBusDepoDao {
 
-	BusDaoImpl b = new BusDaoImpl();
+	private static final Logger LOG = LogManager.getRootLogger();
 
 	@Override
-	public BusDepo read()  {		
+	public BusDepo read() {
+		BusDaoImpl b = new BusDaoImpl();
 		BusDepo busDepo;
-		SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {
 			busDepo = session.selectOne("BusDepo.getBusDepoById");
 			session.commit();
@@ -29,7 +28,7 @@ public class BusDepoImpl extends SessionFactory implements IBusDepoDao {
 			session.close();
 		}
 		busDepo.setBuses(b.getAll());
-		rootLogger.info(busDepo.toString());
+		LOG.info(busDepo.toString());
 		return busDepo;
 	}
 

@@ -19,7 +19,6 @@ import com.roxoft.model.transport.Tram;
 
 public class TramDaoImpl implements ITramDao {
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TramDaoImpl.class);
 	private final Connection connection;
 
@@ -103,7 +102,7 @@ public class TramDaoImpl implements ITramDao {
 				}
 			
 		}
-		rootLogger.info(tr.toString());
+		LOG.info(tr.toString());
 		return tr;
 	}
 

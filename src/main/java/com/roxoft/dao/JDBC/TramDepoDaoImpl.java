@@ -15,7 +15,6 @@ import com.roxoft.model.depos.TramDepo;
 
 public class TramDepoDaoImpl implements ITramDepoDao {
 
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(TramDepoDaoImpl.class);
 
 	private Connection connection;

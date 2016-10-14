@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.roxoft.dao.IBusDao;
@@ -18,7 +16,6 @@ import com.roxoft.model.transport.Bus;
 
 public class BusDaoImpl implements IBusDao {
 
-	private static final Logger rootLogger = LogManager.getRootLogger();
 	private static final Logger LOG = Logger.getLogger(BusDaoImpl.class);
 	private Connection connection;
 
@@ -103,7 +100,7 @@ public class BusDaoImpl implements IBusDao {
 					LOG.error("SQLException", e);
 				}
 		}
-		rootLogger.info(b.toString());
+		LOG.info(b.toString());
 		return b;
 	}
 

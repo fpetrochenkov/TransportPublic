@@ -11,16 +11,17 @@ import com.roxoft.dao.ITaxiStationDao;
 import com.roxoft.model.depos.BusDepo;
 import com.roxoft.model.depos.TaxiStation;
 
-public class TaxiStationImpl extends SessionFactory implements ITaxiStationDao{
+public class TaxiStationImpl  implements ITaxiStationDao{
 	
-	private static final Logger rootLogger = LogManager.getRootLogger();
+	private static final Logger LOG = LogManager.getRootLogger();
 
-	TaxiDaoImpl t = new TaxiDaoImpl();
+	
 	
 	@Override
 	public TaxiStation read() {
+		TaxiDaoImpl t = new TaxiDaoImpl();
 		TaxiStation taxiStation;
-        SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
         try {
         	taxiStation = session.selectOne("TaxiStation.getTaxiStationById");
         session.commit();
@@ -28,7 +29,7 @@ public class TaxiStationImpl extends SessionFactory implements ITaxiStationDao{
         	session.close();
         }
         taxiStation.setTaxis(t.getAll());
-        rootLogger.info(taxiStation.toString());
+        LOG.info(taxiStation.toString());
         return taxiStation;
 	}
 

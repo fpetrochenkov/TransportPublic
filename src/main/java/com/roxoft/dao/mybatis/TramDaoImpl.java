@@ -11,13 +11,13 @@ import com.roxoft.dao.ITramDao;
 import com.roxoft.model.transport.Bus;
 import com.roxoft.model.transport.Tram;
 
-public class TramDaoImpl extends SessionFactory implements ITramDao{
+public class TramDaoImpl  implements ITramDao{
 	
 	private static final Logger rootLogger = LogManager.getRootLogger();
 
 	@Override
 	public void create(Tram entity)  {
-		SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {		
 			session.insert("Tram.insert", entity);
 			session.commit();
@@ -30,7 +30,7 @@ public class TramDaoImpl extends SessionFactory implements ITramDao{
 	@Override
 	public Tram read(int key)  {
 		Tram tram;
-        SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
         try {
         	tram = session.selectOne("Tram.getTramById", key);
         session.commit();
@@ -44,7 +44,7 @@ public class TramDaoImpl extends SessionFactory implements ITramDao{
 	@Override
 	public List<Tram> getAll()  {
 		List<Tram> list;
-		SqlSession session = SessionFactory.getSession();
+		SqlSession session = SessionFactory.getInstance().getSqlSessionFactory().openSession();
 		try {
         list = session.selectList("Tram.getAllTrams");
         session.commit();
